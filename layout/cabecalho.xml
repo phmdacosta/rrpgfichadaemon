@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flowLayout  name="containerCabecalho" class="LayoutInterno" align="top" autoHeight="true" orientation="horizontal"> 
+<!--<flowLayout  name="containerCabecalho" align="top" left="20" top="20" autoHeight="true" width="200" orientation="vertical" margins="{left=20, top=20}"> -->
+
+	<event name="onAfterLayoutCalc">
+		Cabecalho:setSheet(sheet);
+	</event>
+
+	<layout class="LayoutCampo" name="containerLevelExp">
+		<!-- Level -->
+		<layout align="left">
+			<label text="LV:"/>
+			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="level"/>
+			<dataLink field="level" defaultValue="1"/>
+		</layout>
+
+		<!-- Experiência -->
+		<layout class="ProxHorizon" align="left">
+			<label text="EXP:"/>
+			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="exp"/>
+			<dataLink field="level" defaultValue="0"/>
+		</layout>
+	</layout>
+	<flowLineBreak lineSpacing="10"/>
+
+	<!-- Informações personagem -->
+	<layout class="LayoutCampo" name="containerInfoPers" width="900">
+		<!-- Idade -->
+		<layout align="left">
+			<label text="Idade:"/>
+			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="idade"/>
+		</layout>
+
+		<!-- Sexo -->
+		<layout class="ProxHorizon" align="left">
+			<label text="Sexo:"/>
+			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="sexo"/>
+		</layout>
+
+		<!-- Altura -->
+		<layout class="ProxHorizon" align="left">
+			<label text="Altura:"/>
+			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="altura"/>
+		</layout>
+
+		<!-- Peso -->
+		<layout class="ProxHorizon" align="left">
+			<label text="Peso:"/>
+			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="peso"/>
+		</layout>
+	</layout>
+	<flowLineBreak lineSpacing="20"/>
+ 
+ 	<!-- Pontos saúde -->
+	<layout class="LayoutCampo" name="containerPvPm">
+		<!-- PV -->
+		<layout align="left">
+			<label text="PV:"/>
+			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="pv"/>
+		</layout>
+
+		<!-- PM -->
+		<layout class="ProxHorizon" align="left">
+			<label text="PM:"/>
+			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="pm"/>
+		</layout>
+	</layout>
+	<flowLineBreak lineSpacing="10"/>
+
+	<layout class="LayoutCampo" name="containerIpPh">
+		<!-- IP -->
+		<layout align="left">
+			<label text="IP:"/>
+			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="ip"/>
+		</layout>
+
+		<!-- PH -->
+		<layout class="ProxHorizon" align="left">
+			<label text="PH:"/>
+			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="ph"/>
+		</layout>
+	</layout>
+	
+	<!-- Mira -->
+	<!-- 
+	<layout class="LayoutCampo">
+		<label align="left" text="Mira: " width="45"/>
+		<edit type="number" keyboardType="numberPad" align="left" 
+			horzTextAlign="center" field="mira" width="100"/>
+	</layout>
+	 -->
+
+	<script>
+		require('scripts/base.lua');
+	</script>
+	
+</flowLayout> 
