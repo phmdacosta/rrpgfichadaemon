@@ -1,3 +1,6 @@
+# Output
+output/*
+
 # Compiled Lua sources
 luac.out
 
