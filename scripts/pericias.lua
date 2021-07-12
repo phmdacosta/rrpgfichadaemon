@@ -88,7 +88,7 @@ function Pericias:adicionarPericia(sheet, recordList)
         self.periciasObservers[node.id].onChanged = 
                     function(nodo, attribute, oldValue)
                         local nomeNodo2 = self.getNomeItem(nodo.id);
-                        sheet.listaArmas[nomeNodo2] = nodo;
+                        sheet.listaPericias[nomeNodo2] = nodo;
                     end;
     end;
 
