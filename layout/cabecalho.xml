@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<flowLayout  name="containerCabecalho" class="LayoutInterno" align="top" autoHeight="true" orientation="horizontal"> 
+<flowLayout name="containerCabecalho" class="LayoutInterno" align="top" autoHeight="true" orientation="horizontal"> 
 <!--<flowLayout  name="containerCabecalho" align="top" left="20" top="20" autoHeight="true" width="200" orientation="vertical" margins="{left=20, top=20}"> -->
 
 	<event name="onAfterLayoutCalc">

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmItemAprim" theme="light" height="50">
+
+	<style>
+		edit {
+			height: 25;
+			fontSize: 14;
+		}
+		label {
+			height: 25;
+		}
+		.Hint {
+			horzTextAlign: center;
+			fontSize: 10;
+		}
+		.Line {
+			width: 450;
+		}
+		.Margin {
+			margins: {right=5};
+		}
+		.Nome {
+			width: 300;
+		}
+		.Pontos {
+			width: 50;
+		}
+	</style>
+
+	<flowLayout class="Line" autoHeight="true">
+		<flowLayout class="Margin" align="left" autoHeight="true" width="25" maxControlsPerLine="1">
+			<rectangle height="25" width="25" opacity="0"/>
+			<button height="25" width="25" text="X" onClick="NDB.deleteNode(sheet);"/>
+		</flowLayout>
+
+		<!-- Campos não visíveis para guarda informação -->
+		<edit visible="false" enabled="false" field="idAprim"/> <!-- ID do Aprimoramento -->
+		<edit visible="false" enabled="false" field="descricaoAprim"/> <!-- Descrição do Aprimoramento -->
+		<dataLink field="descricaoAprim" defaultValue="Texto de descrição do parimoramento, isso aqui sera lido através de um arquivo excel contendo todas as informações do aprimoramento. Tá ficando bonito!"/>
+		
+		<!-- Campos visíveis -->
+		<!-- Nome do Aprimoramento -->
+		<flowLayout class="Nome Margin" align="left" autoHeight="true" maxControlsPerLine="1">
+			<label class="Nome Hint" text="Nome"/>
+			<edit class="Nome" field="nomeAprim"/>
+		</flowLayout>
+
+		<!-- Pontos de custo do Aprimoramento -->
+		<flowLayout class="Pontos Margin" align="left" autoHeight="true" maxControlsPerLine="1">
+			<label class="Pontos Hint" text="Pontos"/>
+			<edit class="Pontos" field="pontosAprim" horzTextAlign="center"/>
+		</flowLayout>
+
+		<!-- Detalhes do Aprimoramento -->
+		<flowLayout class="Margin" align="left" autoHeight="true" width="25" maxControlsPerLine="1">
+			<rectangle height="25" width="25" opacity="0"/>
+			<button height="25" width="25" text="?">
+				<event name="onClick">
+					Aprim:alternarVisibilidadeDetalhes(sheet);
+				</event>
+			</button>
+		</flowLayout>
+
+		<!--
+		<flowLayout name="boxDetalhesAprim" visible="false" width="400" margins="{left=4, right=4}" autoHeight="true" align="left">
+			<dataScopeBox>
+				<rectangle align="top" color="black" xradius="10" yradius="10"
+								height="180" padding="{top=3, left=3, right=3, bottom=3}">
+								
+
+					<layout align="top" height="30" margins="{bottom=4}">
+						<label align="left" text="Titulo do Item:" autoSize="true"/>
+						<edit align="client" field="campoDetalheTitulo" enabled="false"/>
+					</layout>                       
+
+					<layout align="top" height="130">
+						<layout align="client" margins="{left=2}">
+							<textEditor align="top" field="campoDetalheDescricao" height="100"/>
+					</layout>
+				</rectangle>
+			</dataScopeBox>
+		</flowLayout>
+		 -->
+
+		
+	</flowLayout>
+
+	<script>
+		require('scripts/aprim.lua');	
+	</script>
+</form>
