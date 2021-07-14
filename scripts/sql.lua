@@ -11,6 +11,8 @@ Content = {
 
 Object = {}
 
+local SEPARATOR = ';'
+
 local function splitLines(s, delimiter)
     local result = {};
     for match in (s..delimiter):gmatch(delimiter) do
@@ -20,20 +22,22 @@ local function splitLines(s, delimiter)
 end;
 
 local function getObjectFromRaw(rawHeader, rawData)
-    local headColumns = Util.split(rawHeader, ";")
-    local dataColumns = Util.split(rawData, ";")
+    local headColumns = Util.split(rawHeader, SEPARATOR)
+    local dataColumns = Util.split(rawData, SEPARATOR)
     local obj = Object
 
     -- Search between columns
     for j = 1, #headColumns do
-        obj[headColumns[j]] = dataColumns[j]
+        if j <= #dataColumns then
+            obj[headColumns[j]] = dataColumns[j]
+        end
     end
 
     return obj;
 end
 
 local function getHeaderFromRaw(rawHeader)
-    local headColumns = Util.split(rawHeader, ";")
+    local headColumns = Util.split(rawHeader, SEPARATOR)
     local headerTable = {}
 
     -- Search between columns
