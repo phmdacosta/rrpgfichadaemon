@@ -91,10 +91,6 @@ function Pericias:adicionarPericia(sheet, recordList)
                         sheet.listaPericias[nomeNodo2] = nodo;
                     end;
     end;
-
-    if sheet.atribBasePericia ~= nil then
-        showMessage(sheet.atribBasePericia.items)
-    end
 end;
 
 function Pericias.removerPericia(sheet, node)

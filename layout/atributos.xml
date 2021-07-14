@@ -135,7 +135,7 @@
 		<label class="LabelNumber" field="percentAtribPER"/>
 		<label class="LabelNumber" field="bonusPER" visible="false"/>
 		<button text="Rolar" onClick="Atributos.efetuarTeste(sheet, 'PER')"/>
-		<dataLink fields="{'modAtribPER', 'modAtribPER'}" defaultValues="{'0','0'}">
+		<dataLink fields="{'atribPER', 'modAtribPER'}" defaultValues="{'0','0'}">
 			<event name="onChange">
 				Atributos:onChange(sheet, 'PER');
 			</event>

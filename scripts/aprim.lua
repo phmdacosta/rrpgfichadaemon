@@ -94,9 +94,6 @@ function Aprim.removerAprim(sheet, node)
 end;
 
 function Aprim:alternarVisibilidadeDetalhes(sheetItem)
-    --showMessage(Utils.tableToStr(sheetItem));
-    --local objAprim = Aprim:procurar(sheetItem.nomeAprim);
-
     local parentForm = Aprim:getForm();
 
     if parentForm.boxDetalhesAprim.node == parentForm.listAprim.selectedNode then
@@ -127,6 +124,12 @@ function Aprim:procurarAprim(sheetItem)
             local achou = false;
             local dbItens = Aprim:getDBItens();
 
+            -- Ordenamos a lista por ordem alfabetica para facilitar a busca do nome
+            table.sort(dbItens, function (left, right)
+                --return (tonumber(left.id) or 0) < (tonumber(right.id) or 0)
+                return left.nome < right.nome;
+            end);
+
             for _,a in ipairs(dbItens) do
                 if a.nome == sheetItem.nomeAprim 
                     or string.find(a.nome, sheetItem.nomeAprim) then
@@ -139,7 +142,8 @@ function Aprim:procurarAprim(sheetItem)
             end;
 
             if not achou then
-                showMessage('Não foi possível encontrar o aprimoramento '..sheetItem.nomeAprim);
+                showMessage('Não foi possível encontrar o aprimoramento \''..sheetItem.nomeAprim
+                            ..'\'. Verifique se o nome está escrito corretamente com todas as pontuações e acentos');
             end
     end;
 end;
@@ -159,7 +163,8 @@ function Aprim:atualizarComPontos(sheetItem)
                         achou = true;
                         sheetItem.idAprim = a.id;
                         sheetItem.nomeAprim = a.nome;
-                        sheetItem.descricaoAprim = a.descricao;
+                        sheetItem.descricaoAprim = a.pontos.." ponto(s): "..a.descricao;
+
                         --[[
                             Cada aprimoramento é dividido pelos pontos na base de dados (cada ponto diferente é um registro diferente).
                             Desta forma precisamos procurar os outros registros deste aprimoramento para exibir uma descrição completa.
@@ -168,7 +173,25 @@ function Aprim:atualizarComPontos(sheetItem)
                         if a.id_ref_aprim ~= nil and tonumber(a.id_ref_aprim) > 0 then
                             local parents =  Aprim:getAllParents(dbContent, a.id);
                             for _,p in ipairs(parents) do
-                                sheetItem.descricaoAprim = p.descricao..'\n\n'..sheetItem.descricaoAprim;
+
+                                if p.descricao == '' then
+                                    sheetItem.descricaoAprim = p.descricao..sheetItem.descricaoAprim;
+                                else
+                                    if p.pontos ~= nil and p.pontos ~= '0' and p.pontos ~= '' then
+                                        sheetItem.descricaoAprim = p.pontos.." ponto(s): "..p.descricao..'\n'..sheetItem.descricaoAprim;
+                                    else
+                                        sheetItem.descricaoAprim = p.descricao..'\n'..sheetItem.descricaoAprim;
+                                    end;
+
+                                    --[[
+                                        O textEdit por algum motivo está escondendo o final do texto.
+                                        Incluindo algumas quebras de linha geramos espaço para que o 
+                                        componente possa cortar sem cortar informações do texto.
+                                    ]]
+                                    if not Util.endsWith(sheetItem.descricaoAprim, '\n\n\n') then
+                                        sheetItem.descricaoAprim = sheetItem.descricaoAprim..'\n\n\n'
+                                    end;
+                                end
                             end;
                         end;
                 end;
@@ -197,7 +220,7 @@ function Aprim:getAllParents(dbContent, childId)
                     table.insert(parents, parent);
                     c = Util.copy(parent);
                 end;
-            until c == nil or c.id_ref_aprim == nil or c.id_ref_aprim == ''
+            until c == nil or c.id_ref_aprim == nil or c.id_ref_aprim == '' or c.id_ref_aprim == '0'
         end;
     end;
 

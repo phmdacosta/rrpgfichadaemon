@@ -25,3 +25,11 @@ function Util.copy(obj)
     for k, v in pairs(obj) do res[Util.copy(k)] = Util.copy(v) end
     return res
 end
+
+function Util.startsWith(str, start)
+    return str:sub(1, #start) == start
+ end
+
+ function Util.endsWith(str, ending)
+    return ending == "" or str:sub(-#ending) == ending
+ end
