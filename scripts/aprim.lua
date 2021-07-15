@@ -126,7 +126,6 @@ function Aprim:procurarAprim(sheetItem)
 
             -- Ordenamos a lista por ordem alfabetica para facilitar a busca do nome
             table.sort(dbItens, function (left, right)
-                --return (tonumber(left.id) or 0) < (tonumber(right.id) or 0)
                 return left.nome < right.nome;
             end);
 

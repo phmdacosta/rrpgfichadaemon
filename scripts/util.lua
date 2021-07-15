@@ -20,9 +20,13 @@ function Util.handleNil(s)
 end
 
 function Util.copy(obj)
-    if type(obj) ~= 'table' then return obj end
+    if type(obj) ~= 'table' then 
+        return obj
+    end
     local res = setmetatable({}, getmetatable(obj))
-    for k, v in pairs(obj) do res[Util.copy(k)] = Util.copy(v) end
+    for k, v in pairs(obj) do 
+        res[Util.copy(k)] = Util.copy(v)
+    end
     return res
 end
 
