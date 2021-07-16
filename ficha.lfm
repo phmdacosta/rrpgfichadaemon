@@ -124,6 +124,10 @@
                 <tab title="Perícias">
                     <import file="layout/pericias.xml"/>
                 </tab>
+
+				<tab title="Background">
+                    <import file="layout/background.xml"/>
+                </tab>
         	</tabControl>
 		</flowLayout>
 	</scrollBox>
