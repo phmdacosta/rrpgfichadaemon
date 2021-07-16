@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmItemAprim" theme="light" height="50">
+
+	<style>
+		edit {
+			height: 25;
+			fontSize: 14;
+		}
+		label {
+			height: 25;
+		}
+		.Hint {
+			horzTextAlign: center;
+			fontSize: 10;
+		}
+		.Line {
+			width: 450;
+		}
+		.Margin {
+			margins: {right=5};
+		}
+		.Nome {
+			width: 300;
+		}
+		.Pontos {
+			width: 50;
+		}
+	</style>
+
+	<flowLayout class="Line" autoHeight="true">
+		<flowLayout class="Margin" align="left" autoHeight="true" width="25" maxControlsPerLine="1">
+			<rectangle height="25" width="25" opacity="0"/>
+			<button height="25" width="25" text="X" onClick="NDB.deleteNode(sheet);"/>
+		</flowLayout>
+
+		<!-- Campos não visíveis para guarda informação -->
+		<edit visible="false" enabled="false" field="idAprim"/> <!-- ID do Aprimoramento -->
+		<edit visible="false" enabled="false" field="descricaoAprim"/> <!-- Descrição do Aprimoramento -->
+		
+		<!-- Campos visíveis -->
+		<!-- Nome do Aprimoramento -->
+		<flowLayout class="Nome Margin" align="left" autoHeight="true" maxControlsPerLine="1">
+			<label class="Nome Hint" text="Nome"/>
+			<edit class="Nome" field="nomeAprim"/>
+			<dataLink field="nomeAprim">
+				<event name="onUserChange">
+					Aprim:procurarAprim(sheet);
+				</event>
+			</dataLink>
+		</flowLayout>
+
+		<!-- Pontos de custo do Aprimoramento -->
+		<flowLayout class="Pontos Margin" align="left" autoHeight="true" maxControlsPerLine="1">
+			<label class="Pontos Hint" text="Pontos"/>
+			<edit class="Pontos" field="pontosAprim" horzTextAlign="center"/>
+			<dataLink field="pontosAprim">
+				<event name="onUserChange">
+					Aprim:atualizarComPontos(sheet);
+				</event>
+			</dataLink>
+		</flowLayout>
+
+		<!-- Detalhes do Aprimoramento -->
+		<flowLayout class="Margin" align="left" autoHeight="true" width="25" maxControlsPerLine="1">
+			<rectangle height="25" width="25" opacity="0"/>
+			<button height="25" width="25" text="?">
+				<event name="onClick">
+					Aprim:alternarVisibilidadeDetalhes();
+				</event>
+			</button>
+		</flowLayout>		
+	</flowLayout>
+
+	<script>
+		require('scripts/aprim.lua');	
+	</script>
+</form>

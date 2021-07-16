@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form name="frmItemCartas" theme="light" height="50">
+
+	<style>
+		edit {
+			height: 25;
+			fontSize: 14;
+		}
+		label {
+			height: 25;
+		}
+		.Hint {
+			horzTextAlign: center;
+			fontSize: 10;
+		}
+		.Line {
+			width: 450;
+		}
+		.Margin {
+			margins: {right=5};
+		}
+		.Nome {
+			width: 300;
+		}
+		.Raridade {
+			width: 50;
+		}
+	</style>
+
+	<flowLayout class="Line" autoHeight="true">
+		<flowLayout class="Margin" align="left" autoHeight="true" width="25" maxControlsPerLine="1">
+			<rectangle height="25" width="25" opacity="0"/>
+			<button height="25" width="25" text="X" onClick="NDB.deleteNode(sheet);"/>
+		</flowLayout>
+
+		<!-- Campos não visíveis para guarda informação -->
+		<edit visible="false" enabled="false" field="idCarta"/> <!-- ID da Carta -->
+		<edit visible="false" enabled="false" field="descricaoCarta"/> <!-- Descrição da Carta -->
+		
+		<!-- Campos visíveis -->
+		<!-- Nome da Carta -->
+		<flowLayout class="Nome Margin" align="left" autoHeight="true" maxControlsPerLine="1">
+			<label class="Nome Hint" text="Nome"/>
+			<edit class="Nome" field="nomeCarta"/>
+			<dataLink field="nomeCarta">
+				<event name="onUserChange">
+					Cartas:procurarCarta(sheet);
+				</event>
+			</dataLink>
+		</flowLayout>
+
+		<!-- Pontos de custo da Carta -->
+		<flowLayout class="Raridade Margin" align="left" autoHeight="true" maxControlsPerLine="1">
+			<label class="Raridade Hint" text="Raridade"/>
+			<edit class="Raridade" field="raridadeCarta" horzTextAlign="center"/>
+			<dataLink field="raridadeCarta">
+				<event name="onUserChange">
+					Cartas:atualizarComRaridade(sheet);
+				</event>
+			</dataLink>
+		</flowLayout>
+
+		<!-- Detalhes da Carta -->
+		<flowLayout class="Margin" align="left" autoHeight="true" width="25" maxControlsPerLine="1">
+			<rectangle height="25" width="25" opacity="0"/>
+			<button height="25" width="25" text="?">
+				<event name="onClick">
+					Cartas:alternarVisibilidadeDetalhes(sheet);
+				</event>
+			</button>
+		</flowLayout>		
+	</flowLayout>
+
+	<script>
+		require('scripts/cartas.lua');	
+	</script>
+</form>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Atributos -->
+<flowLayout name="containerAtributos" class="LayoutInterno"  align="top" autoHeight="true" width="260" orientation="horizontal">
+
+	<event name="onAfterLayoutCalc">
+		Atributos:setSheet(sheet);
+	</event>
+	
+	<style>
+		.Atributo edit {
+			align: left;
+			height: 25;
+			width: 50;
+			horzTextAlign: center;
+			fontSize: 20;
+		}
+
+		.Atributo label {
+			width: 50;
+		}
+
+		.Atributo button {
+			align: left;
+			height: 25;
+			width: 50;
+			margins: {left=5};
+		}
+	</style>
+
+	<label class="Titulo" align="left" text="Atributos"/>
+	<flowLineBreak/>
+	
+	<layout class="LayoutCampo Atributo">
+		<rectangle align="left" width="50" opacity="0"/>
+		<label class="Hint" text="Valor"/>
+		<label class="Hint" text="MOD"/>
+		<label class="Hint" text="%"/>
+	</layout>
+	
+	<!-- Constituição -->
+	<layout class="LayoutCampo Atributo">
+		<label align="left" text="CON: "/>
+		<edit field="atribCON" type="number" keyboardType="numberPad"/>
+		<edit field="modAtribCON" type="number" keyboardType="numberPad"/>
+		<label class="LabelNumber" field="percentAtribCON"/>
+		<label class="LabelNumber" field="bonusCON" visible="false"/>
+		<button text="Rolar" onClick="Atributos.efetuarTeste(sheet, 'CON')"/>
+		<dataLink fields="{'atribCON', 'modAtribCON'}" defaultValues="{'0','0'}">
+			<event name="onChange">
+				Atributos:onChange(sheet, 'CON');
+			</event>
+		</dataLink>
+	</layout>
+
+	<!-- Força -->
+	<layout class="LayoutCampo Atributo">
+		<label align="left" text="FOR: "/>
+		<edit field="atribFOR" type="number" keyboardType="numberPad"/>
+		<edit field="modAtribFOR" type="number" keyboardType="numberPad"/>
+		<label class="LabelNumber" field="percentAtribFOR"/>
+		<label class="LabelNumber" field="bonusFOR" visible="false"/>
+		<button text="Rolar" onClick="Atributos.efetuarTeste(sheet, 'FOR')"/>
+		<dataLink fields="{'atribFOR', 'modAtribFOR'}" defaultValues="{'0','0'}">
+			<event name="onChange">
+				Atributos:onChange(sheet, 'FOR');
+			</event>
+		</dataLink>	
+	</layout>
+	
+	<!-- Destreza -->
+	<layout class="LayoutCampo Atributo">
+		<label align="left" text="DEX: "/>
+		<edit field="atribDEX" type="number" keyboardType="numberPad"/>
+		<edit field="modAtribDEX" type="number" keyboardType="numberPad"/>
+		<label class="LabelNumber" field="percentAtribDEX"/>
+		<label class="LabelNumber" field="bonusDEX" visible="false"/>
+		<button text="Rolar" onClick="Atributos.efetuarTeste(sheet, 'DEX')"/>
+		<dataLink fields="{'atribDEX', 'modAtribDEX'}" defaultValues="{'0','0'}">
+			<event name="onChange">
+				Atributos:onChange(sheet, 'DEX');
+			</event>
+		</dataLink>
+	</layout>
+	
+	<!-- Agilidade -->
+	<layout class="LayoutCampo Atributo">
+		<label align="left" text="AGI: "/>
+		<edit field="atribAGI" type="number" keyboardType="numberPad"/>
+		<edit field="modAtribAGI" type="number" keyboardType="numberPad"/>
+		<label class="LabelNumber" field="percentAtribAGI"/>
+		<label class="LabelNumber" field="bonusAGI" visible="false"/>
+		<button text="Rolar" onClick="Atributos.efetuarTeste(sheet, 'AGI')"/>
+		<dataLink fields="{'atribAGI', 'modAtribAGI'}" defaultValues="{'0','0'}">
+			<event name="onChange">
+				Atributos:onChange(sheet, 'AGI');
+			</event>
+		</dataLink>
+	</layout>
+	
+	<!-- Inteligência -->
+	<layout class="LayoutCampo Atributo">
+		<label align="left" text="INT: "/>
+		<edit field="atribINT" type="number" keyboardType="numberPad"/>
+		<edit field="modAtribINT" type="number" keyboardType="numberPad"/>
+		<label class="LabelNumber" field="percentAtribINT"/>
+		<label class="LabelNumber" field="bonusINT" visible="false"/>
+		<button text="Rolar" onClick="Atributos.efetuarTeste(sheet, 'INT')"/>
+		<dataLink fields="{'atribINT', 'modAtribINT'}" defaultValues="{'0','0'}">
+			<event name="onChange">
+				Atributos:onChange(sheet, 'INT');
+			</event>
+		</dataLink>
+	</layout>
+	
+	<!-- Força de Vontade -->
+	<layout class="LayoutCampo Atributo">
+		<label align="left" text="WILL: "/>
+		<edit field="atribWILL" type="number" keyboardType="numberPad"/>
+		<edit field="modAtribWILL" type="number" keyboardType="numberPad"/>
+		<label class="LabelNumber" field="percentAtribWILL"/>
+		<label class="LabelNumber" field="bonusWILL" visible="false"/>
+		<button text="Rolar" onClick="Atributos.efetuarTeste(sheet, 'WILL')"/>
+		<dataLink fields="{'atribWILL', 'modAtribWILL'}" defaultValues="{'0','0'}">
+			<event name="onChange">
+				Atributos:onChange(sheet, 'WILL');
+			</event>
+		</dataLink>
+	</layout>
+	
+	<!-- Percepição -->
+	<layout class="LayoutCampo Atributo">
+		<label align="left" text="PER: "/>
+		<edit field="atribPER" type="number" keyboardType="numberPad"/>
+		<edit field="modAtribPER" type="number" keyboardType="numberPad"/>
+		<label class="LabelNumber" field="percentAtribPER"/>
+		<label class="LabelNumber" field="bonusPER" visible="false"/>
+		<button text="Rolar" onClick="Atributos.efetuarTeste(sheet, 'PER')"/>
+		<dataLink fields="{'atribPER', 'modAtribPER'}" defaultValues="{'0','0'}">
+			<event name="onChange">
+				Atributos:onChange(sheet, 'PER');
+			</event>
+		</dataLink>
+	</layout>
+	
+	<!-- Carisma -->
+	<layout class="LayoutCampo Atributo">
+		<label align="left" text="CAR: "/>
+		<edit field="atribCAR" type="number" keyboardType="numberPad"/>
+		<edit field="modAtribCAR" type="number" keyboardType="numberPad"/>
+		<label class="LabelNumber" field="percentAtribCAR"/>
+		<label class="LabelNumber" field="bonusCAR" visible="false"/>
+		<button text="Rolar" onClick="Atributos.efetuarTeste(sheet, 'CAR')"/>
+		<dataLink fields="{'atribCAR', 'modAtribCAR'}" defaultValues="{'0','0'}">
+			<event name="onChange">
+				Atributos:onChange(sheet, 'CAR');
+			</event>
+		</dataLink>
+	</layout>
+	
+	<script>
+		require("scripts/atributos.lua");
+	</script>
+	
+</flowLayout>

@@ -4,7 +4,7 @@
     <id>com.daemon.ficha</id>
     <!--"version" is the version of your plugin. When you release a new version of your module, change here =)-->
     <version>1.0</version>
-    <name>Ficha Daemon Tech</name>
+    <name>FichaWare Daemon Base</name>
     <description>Ficha Daemon para automatizar o jogo.</description>
     <author>phmdacosta</author>
     <site/>

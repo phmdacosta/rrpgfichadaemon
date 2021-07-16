@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flowLayout name="containerCartas" class="LayoutInterno"  align="top" autoHeight="true" orientation="horizontal">
+
+	<event name="onAfterLayoutCalc">
+		Cartas:setSheet(sheet);
+		Cartas:setForm(self);
+		Cartas:carregarTodos();
+	</event>
+
+	<!-- Título -->
+	<label class="Titulo" align="left" text="Cartas"/>
+	<flowLineBreak/>
+
+	<!-- Botão adicionar -->
+	<button align="left" height="25" text="Novo" width="80" onClick="Cartas:adicionarCartas(sheet, self);"/>
+	<flowLineBreak/>
+
+	<!-- Lista itens -->
+	<layout width="450">
+		<recordList name="listCartas" field="recordListCartas" templateForm="frmItemCartas"
+						top="5" width="450" autoHeight="true">
+			<event name="onItemRemoved">
+				Cartas.removerCartas(sheet, node);
+			</event>
+		</recordList>
+	</layout>
+
+	<!-- Detalhes item -->
+	<layout name="containerDetalhesCartas" width="450">
+		<!-- dataScopeBox representando a nossa caixa de detalhes -->  
+		<dataScopeBox name="boxDetalhesCartas" visible="false" height="200" width="450" margins="{left=4, right=4}">
+			<rectangle align="top" color="#e6e6e6" xradius="10" yradius="10" height="200" padding="{top=3, left=3, right=3, bottom=3}">
+				
+				<layout align="top" height="30" margins="{bottom=4}">
+					<edit align="client" field="nomeCartas" enabled="false" transparent="true" fontColor="black"/>
+				</layout>                       
+
+				<layout align="top" height="130">
+					<layout align="client" margins="{left=2}">
+						<textEditor align="top" field="descricaoCartas" height="150" readOnly="true"  transparent="true" fontColor="black"/>
+					</layout>                      
+				</layout>
+			</rectangle>
+		</dataScopeBox>
+	</layout>
+
+	<script>
+		require('scripts/cartas.lua');
+	</script>
+</flowLayout>

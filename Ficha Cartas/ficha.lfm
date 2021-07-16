@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form formType="sheetTemplate" dataType="com.daemon.ficha" 
+    title="Ficha Daemon Tech" name="frmFichaDaemonTech" theme="light"> 
+	
+	<scrollBox align="client" margins="{left=20, top=20}">
+	 
+		<style>
+			layout {
+				left: 20;
+				top: 20;
+				width: 500;
+				height: 500;
+			}
+
+			.LayoutExterno {
+				left: 20;
+				top: 20;
+				width: 950;
+				height: 2000;
+				margins: {left=20, top=20};
+			}
+
+			.LayoutInterno {
+				left: 20;
+				top: 20;
+				width: 900;
+				margins: {left=20, top=20};
+			}
+
+			.LayoutCampo2 {
+				align: top;
+				height: 25;
+				align: left;
+				margins: {left=2, right=2};
+			}
+
+			.LayoutCampo {
+				height: 25;
+				margins: {left=2, right=2};
+			}
+
+			.LayoutCampo layout {
+				height: 25;
+				width: 120;
+			}
+
+			.LayoutCampo label {
+				align: left;
+				width: 45;
+				vertTextAlign: center;
+			}
+
+			.LayoutCampo edit {
+				align: left;
+				height: 25;
+				width: 75;
+				horzTextAlign: center;
+				fontSize: 20;
+			}
+
+			.ProxHorizon {
+				margins: {left=20};
+			}
+
+			.ProxVert {
+				margins: {top=20};
+			}
+			
+			.LabelNumber {
+				align: left;
+				height: 25;
+				width: 50;
+				horzTextAlign: center;
+				fontSize: 20;
+			}
+
+			.Hint {
+				horzTextAlign: center;
+				fontSize: 10;
+			}
+
+			.Titulo {
+				fontSize: 24;
+				height: 25;
+				width: 200;
+				margins: {bottom=10};
+			}
+
+			richEdit {
+				height: 900;
+				width: 900;
+			}
+		</style>
+
+		<script>
+			erroCritico = 95;
+
+			function split(s, delimiter)
+				result = {};
+				for match in (s..delimiter):gmatch("(.-)"..delimiter) do
+					table.insert(result, match);
+				end
+				return result;
+			end;
+
+			function trim(s)
+				return s:gsub("%s+", "")
+			end;
+		</script>
+	
+		<flowLayout name="container" autoHeight="true" width="1000" orientation="horizontal" maxControlsPerLine="1">
+			<tabControl class="LayoutExterno">
+                <tab title="Base">
+                    <import file="layout/cabecalho.xml"/>
+					<import file="layout/Atributos.xml"/>
+					<import file="layout/armadura.xml"/>
+					<import file="layout/armas.xml"/>
+				</tab>
+
+				<tab title="Aprim">
+                    <import file="layout/aprimoramentos.xml"/>
+                </tab>
+				               
+                <tab title="Perícias">
+                    <import file="layout/pericias.xml"/>
+                </tab>
+
+				<tab title="Background">
+                    <import file="layout/background.xml"/>
+                </tab>
+        	</tabControl>
+		</flowLayout>
+	</scrollBox>
+</form>
