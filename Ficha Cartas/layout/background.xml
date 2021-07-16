@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<flowLayout  name="containerBackground" class="LayoutInterno" align="top" autoHeight="true" orientation="horizontal">
-
-    <richEdit align="client" backgroundColor="white" defaultFontColor="black" field="txt"/>
-
-</flowLayout> 
