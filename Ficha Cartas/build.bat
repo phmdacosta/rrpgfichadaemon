@@ -31,7 +31,7 @@ xcopy %from_path_4% %to_path_4% > nul
 ::Save list of base scripts
 dir %to_path_1% /s /b > %list_base_files%
 
-::Move base scripts to 'scripts' folder
+::Move base files to project folder
 move %to_path_1%\* . > nul
 move %to_path_2%\* .\layout > nul
 move %to_path_3%\* .\scripts > nul
@@ -46,7 +46,7 @@ rmdir %to_path_1% > nul
 rdk i
 
 echo Finalizando compilacao.
-::Remove base scripts
+::Remove base files
 for /F "tokens=*" %%A in (%list_base_files%) do (
     set "replaceWith=."
     set "str=%%A"
