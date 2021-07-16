@@ -37,3 +37,9 @@ function Util.startsWith(str, start)
  function Util.endsWith(str, ending)
     return ending == "" or str:sub(-#ending) == ending
  end
+
+ function Util.orderTableAlphabetical(t, fieldName)
+    table.sort(t, function (left, right)
+        return left[fieldName] < right[fieldName]
+    end)
+ end

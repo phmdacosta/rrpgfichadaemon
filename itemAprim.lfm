@@ -36,7 +36,6 @@
 		<!-- Campos não visíveis para guarda informação -->
 		<edit visible="false" enabled="false" field="idAprim"/> <!-- ID do Aprimoramento -->
 		<edit visible="false" enabled="false" field="descricaoAprim"/> <!-- Descrição do Aprimoramento -->
-		<dataLink field="descricaoAprim" defaultValue="Texto de descrição do parimoramento, isso aqui sera lido através de um arquivo excel contendo todas as informações do aprimoramento. Tá ficando bonito!"/>
 		
 		<!-- Campos visíveis -->
 		<!-- Nome do Aprimoramento -->
@@ -66,7 +65,7 @@
 			<rectangle height="25" width="25" opacity="0"/>
 			<button height="25" width="25" text="?">
 				<event name="onClick">
-					Aprim:alternarVisibilidadeDetalhes(sheet);
+					Aprim:alternarVisibilidadeDetalhes();
 				</event>
 			</button>
 		</flowLayout>		

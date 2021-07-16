@@ -93,7 +93,7 @@ function Aprim.removerAprim(sheet, node)
     end;
 end;
 
-function Aprim:alternarVisibilidadeDetalhes(sheetItem)
+function Aprim:alternarVisibilidadeDetalhes()
     local parentForm = Aprim:getForm();
 
     if parentForm.boxDetalhesAprim.node == parentForm.listAprim.selectedNode then
@@ -125,9 +125,7 @@ function Aprim:procurarAprim(sheetItem)
             local dbItens = Aprim:getDBItens();
 
             -- Ordenamos a lista por ordem alfabetica para facilitar a busca do nome
-            table.sort(dbItens, function (left, right)
-                return left.nome < right.nome;
-            end);
+            Util.orderTableAlphabetical(dbItens, 'nome');
 
             for _,a in ipairs(dbItens) do
                 if a.nome == sheetItem.nomeAprim 
@@ -169,8 +167,9 @@ function Aprim:atualizarComPontos(sheetItem)
                             Desta forma precisamos procurar os outros registros deste aprimoramento para exibir uma descrição completa.
                             Cada aprimoramento tem um campo chamado id_ref_aprim que contém o id dos pontos anteriores.
                         ]]
-                        if a.id_ref_aprim ~= nil and tonumber(a.id_ref_aprim) > 0 then
-                            local parents =  Aprim:getAllParents(dbContent, a.id);
+                        local refFieldName = 'id_ref_aprim';
+                        if a[refFieldName] ~= nil and tonumber(a[refFieldName]) > 0 then
+                            local parents =  Aprim:getAllParents(dbContent, a.id, refFieldName);
                             for _,p in ipairs(parents) do
 
                                 if p.descricao == '' then
@@ -202,24 +201,24 @@ function Aprim:atualizarComPontos(sheetItem)
     end;
 end;
 
-function Aprim:getAllParents(dbContent, childId)
+function Aprim:getAllParents(dbContent, childId, refFieldName)
     local parents = nil;
 
     if childId ~= nil then
         local c = dbContent:getObjectById(childId);
 
         if c ~= nil then
-            if c.id_ref_aprim ~= nil then
+            if c[refFieldName] ~= nil then
                 parents = {}
             end
     
             repeat
-                local parent = dbContent:getObjectById(c.id_ref_aprim);
+                local parent = dbContent:getObjectById(c[refFieldName]);
                 if parent ~= nil then
                     table.insert(parents, parent);
                     c = Util.copy(parent);
                 end;
-            until c == nil or c.id_ref_aprim == nil or c.id_ref_aprim == '' or c.id_ref_aprim == '0'
+            until c == nil or c[refFieldName] == nil or c[refFieldName] == '' or c[refFieldName] == '0'
         end;
     end;
 
