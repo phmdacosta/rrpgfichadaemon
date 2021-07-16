@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form formType="sheetTemplate" dataType="com.daemon.ficha" 
-    title="FichaWare Daemon Base" name="frmFichaWareDaemonBase" theme="light"> 
+    title="FichaWare Daemon Cartas" name="frmFichaWareDaemonCartas" theme="light"> 
 	
 	<scrollBox align="client" margins="{left=20, top=20}">
 	 
