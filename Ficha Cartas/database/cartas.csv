@@ -67,151 +67,151 @@ id;nome;descricao;raridade;tipo;subTipo;obs
 66;Charged Blast;Ao passar o turno sem atacar, ganha + 100% de Dano pode fazer isso até 2x.;3;FORCE;Arco e Flecha;
 67;Trick Shoot;Se errar o alvo, a flecha ricocheteia e vai em outro alvo de sua escolha, podendo rolar novamente.;4;FORCE;Arco e Flecha;
 68;DeadEnd Shoot;Ao passar o turno, o próximo disparo causa + 100% de dano e tem +30% de acerto, e é considerado ação Bônus.;5;FORCE;Arco e Flecha;
-69;ShockWave;Danos corpo a corpo causa uma onda de ataque a distância de 5m, 5 turnos;1;FORCE;Efeitos Básicos;
-70;PowerWave;Danos corpo a corpo causa uma onda de ataque a distância de 5m, acerta todos na reta 5 turnos;2;FORCE;Efeitos Básicos;
-71;GreatWave;Danos corpo a corpo causa uma onda de ataque a distância de 20m, acerta todos na reta 5 turnos;3;FORCE;Efeitos Básicos;
-72;Blast Impact;Danos corpo a corpo causa uma explosão na hora do impacto de 3 metros quadrados, 1 ataque.;2;FORCE;Efeitos Básicos;
-73;Blast Force;Danos corpo a corpo causa uma explosão na hora do impacto de 3 metros quadrados, 3 ataques.;3;FORCE;Efeitos Básicos;
-74;Great Impact;Danos corpo a corpo causa uma explosão na hora do impacto de 10 metros quadrados, 1 ataque;4;FORCE;Efeitos Básicos;
-75;Doom;Danos corpo a corpo causa uma onda de ataque a distância de 50m, e uma explosão na hora do impacto de 15 metros quadrados, 1 ataque.;5;FORCE;Efeitos Básicos;
-76;Rush Combo;Dá um ataque extra no mesmo turno, mas perde o ataque do próximo turno.;1;FORCE;Efeitos Básicos;
-77;Magic Combo;Dá um ataque extra mágico finalizador no final de seu ataque físico.;2;FORCE;Efeitos Básicos;
-78;Combo;Dá um ataque extra no mesmo turno físico ou mágico.;3;FORCE;Efeitos Básicos;
-79;Full Combo;Dá dois ataques extra no mesmo turno físicos ou mágicos.;4;FORCE;Efeitos Básicos;
-80;Rapid Steps;Ganha uma ação de movimento depois do final de seu turno.;1;FORCE;Efeitos Básicos;
-81;Dash;Suas ações de movimentos, ignoram obstáculos de terreno e altura.;2;FORCE;Efeitos Básicos;
-82;Evading Step;Usa uma ação de movimento fora de seu turno, antes de um inimigo ou aliado executar uma ação.;3;FORCE;Efeitos Básicos;
-83;Transpasser;Permite Transpassar se um inimigo morrer no ataque.;1;FORCE;Efeitos Básicos;
-84;Kill Count;Permite Transpassar se um inimigo morrer no ataque, pode ser feito várias vezes.;2;FORCE;Efeitos Básicos;
-85;Coop;Permite dar um ataque fora de seu turno, assim que um aliado atacar.(ele precisa ter uma arma de caçador);3;FORCE;Efeitos Básicos;
-86;Cordinator;Permite dar uma ação a um aliado seu  de sua escolha no momento de seu ataque. (ele precisa ter uma arma de caçador);4;FORCE;Efeitos Básicos;
-87;All Out Attack;Todos os efeitos de suas cartas e dos aliados, se somam no mesmo turno.;5;FORCE;Efeitos Básicos;
-88;Cross Counter;Contra ataca ao ser acertado fisicamente.;2;FORCE;Efeitos Básicos;
-89;Evade Counter;Contra ataca ao esquivar de um ataque.;2;FORCE;Efeitos Básicos;
-90;Full Counter;Contra ataca ataques físicos sempre, dura 3 turnos.;4;FORCE;Efeitos Básicos;
-91;Poison Strike;Causa Poison no ataque de 1d6 turno, dura um ataque. (pode resistir, teste de Con);1;FORCE;Efeitos Status;
-92;Venom Bite;Causa no ataque Poison de 1d6 turno, dura um ataque. (pode resistir, teste de Con difícil);2;FORCE;Efeitos Status;
-93;Snake Fang;Causa no ataque Poison de 2d6 turno, dura um ataque. (pode resistir, teste de Con difícil);3;FORCE;Efeitos Status;
-94;Pralize strike;Causa paralizia (não pode se mover ou atacar)  no ataque, dura 3 turnos ou até passar em teste de Will, 1 ataque.;2;FORCE;Efeitos Status;
-95;Paralize impact;Causa paralizia (não pode se mover ou atacar) no ataque, dura 3 turnos ou até passar em teste de Will difícil, 1 ataque.;4;FORCE;Efeitos Status;
-96;Stun Strike;Causa Stun no acerto difícil (perde -20% em todos os testes) no ataque, dura até passar em teste de Con, 1 ataque.;1;FORCE;Efeitos Status;
-97;Stun Blade;Causa Stun no acerto difícil (perde -20% em todos os testes) no ataque, dura até passar em teste de Con Difícil, 1 ataque.;3;FORCE;Efeitos Status;
-98;Drain Strike;Rouba 50% de PV do dano causado, 1 ataque;2;FORCE;Efeitos Status;
-99;Drain Escense;Rouba 100% de PV do dano causado, 1 ataque;4;FORCE;Efeitos Status;
-100;Weak Strike;Se passar no difícil o inimigo fica enfraquecido (causa metade dos danos físicos e mágicos), Dura até passar em um teste de Will, um ataque.;1;FORCE;Efeitos Status;
-101;Weak Touch;Se passar no difícil o inimigo fica enfraquecido (causa metade dos danos físicos e mágicos), Dura até passar em um teste de Will Difícil, um ataque.;2;FORCE;Efeitos Status;
-102;Bleeding Slas;Se passar no difícil, causa sangramento no ataque de 1d6 turno (pode estacar), dura até se curar.;1;FORCE;Efeitos Status;
-103;Bleeding Blad;Se passar no difícil, causa sangramento no ataque de 2d6 turno (pode estacar), dura até se curar.;3;FORCE;Efeitos Status;
-104;Status Escense;Faz qualquer carta de status durar na arma por 5 turnos.;3;FORCE;Efeitos Status;
-105;Condensed Escense;Faz qualquer carta de status sempre ativar o efeito de status.;3;FORCE;Efeitos Status;
-106;Cursed Demon Escense;Causa paralizia 3 turnos, Poison 2d6, sangramento 2d6 em um unico ataque, sempre causa o efeito, e não podem ser removidos até 3 turnos.;5;FORCE;Efeitos Status;
-107;Sky Blades;A arma voa como se tivesse vida própria, seus ataques são ação bônus (não pode colocar cartas voando e não tem bônus de força e etc), dura 5 turnos.;2;FORCE;Efeitos Diferenciados;
-108;Wall Run;Permite andar e ficar preso na parede sem cair, dura 5 turnos;1;FORCE;Efeitos Diferenciados;
-109;Sky Fighter;Diciona + 10M a capacidade de altura do pulo,  o personagem cai devagar anulando dano de queda e podendo se direcionar e atcar, dura 5 turnos.;2;FORCE;Efeitos Diferenciados;
-110;Gravity Distortion;Cada ataque defendido ou acertado aumenta a gravidade sobre um alvo, causando penalidade -2 de velocidade, dura 5 turnos.;3;FORCE;Efeitos Diferenciados;
-111;Stealth;Entra em furtividade ficando quase invisível, dura 3 Turnos, ou ao atacar.;3;FORCE;Efeitos Diferenciados;
-112;WeakSpot;Só pode ser usada se não atacar no turno, qualquer inimigo que te atacou e você defendeu ou esquivou, você tem um critico garantido no próximo ataque se acertar (apenas uma vez).;2;FORCE;Efeitos Diferenciados;
-113;Card Break Apha;Sacrifica junto a essa carta, e uma carta ativa Force ou Effect para anular uma carta Force ou Effect de raridade equivalente a sacrificada no inimigo, precisa acertar o ataque para o efeito ativar.;2;FORCE;Efeitos Diferenciados;
-114;Card Break Beta;Sacrifica junto a essa carta, e uma carta ativa  Defense ou magic para anular uma carta defense ou magic de raridade equivalente a sacrificada no inimigo, precisa acertar o ataque para o efeito ativar.;2;FORCE;Efeitos Diferenciados;
-115;Card Break Sigma;Sacrifica junto a essa carta, e uma carta ativa para anular uma carta de raridade equivalente a sacrificada no inimigo, precisa acertar o ataque para o efeito ativar.;4;FORCE;Efeitos Diferenciados;
-116;Card Break Omega;Anula todas as cartas de um inimigo a escolha, exceto por raidade 5, precisa acertar o ataque para o efeito ativar..;5;FORCE;Efeitos Diferenciados;
-117;Samurai Armor ;O dispositvo cria uma armadura em volta do usuário, 1IP, dura 7 Turnos.;1;FORCE;Defesa Básica;
-118;Shogun Armor ;O dispositvo cria uma armadura em volta do usuário, 3IP, dura 10 Turnos.;3;FORCE;Defesa Básica;
-119;Emperror Armor ;O dispositvo cria uma armadura em volta do usuário, 5IP e 5ip mágico, dura 10 Turnos.;5;FORCE;Defesa Básica;
-120;Bronze Steel;Acrescenta 2IP a armadura, diminúi 1 dos turnos totais.;1;FORCE;Defesa Básica;
-121;Silver Steel;Acrescenta 3IP a armadura, diminúi 1 dos turnos totais.;2;FORCE;Defesa Básica;
-122;Gold Steel;Acrescenta 4IP a armadura, diminúi 1 dos turnos totais.;3;FORCE;Defesa Básica;
-123;Platinum Steel;Acrescenta 5IP a armadura, diminúi 1 dos turnos totais.;4;FORCE;Defesa Básica;
-124;Magic Steel;Acrescenta 4IP mágico a armadura, diminúi 1 dos turnos totais.;1;FORCE;Defesa Básica;
-125;Mystic Steel;Acrescenta 6IP mágico a armadura, diminúi 1 dos turnos totais.;2;FORCE;Defesa Básica;
-126;Sacred Steel;Acrescenta 8iP mágico a armadura, diminúi 1 dos turnos totais.;3;FORCE;Defesa Básica;
-127;Ancient Steel;Acrescenta 10iP mágico a armadura, diminúi 1 dos turnos totais.;4;FORCE;Defesa Básica;
-128;Armor Reversal;Ao ser atacado, defendendo ou sendo acertado, seu IP Físico causa dano no inimigo, duração da armadura.;2;FORCE;Defesa Básica;
-129;Brute armor;Ao ser atacado, o Dano de todos os inimigos absorvidos(depende do seu IP Físico) acumulam para serem usados no próximo turno em um ataque físico.;3;FORCE;Defesa Básica;
-130;Magic Armor;Ao ser atacado, o Dano de todos os inimigos absorvidos(depende do seu IP mágico) acumulam para serem usados no próximo turno em um ataque mágico.;3;FORCE;Defesa Básica;
-131;Heal Armor;Ao ser atacado, absorve dano físico e mágico, e transforma em cura no seu turno seguinte se estiver vivo, depende de seus IPs.;4;FORCE;Defesa Básica;
-132;Sun Light Steel;Acrescenta 5IP físico, 10 IP mágico, dá 5 turnos para a armadura.;5;FORCE;Defesa Básica;
-133;Armor Overcharge;Ao ser atacado, absorve dano físico e mágico, dependendo de seus ips, os danos se tornam um para ser usado em um ataque físico ou mágico.;5;FORCE;Defesa Básica;
-134;Fast Block;+10% de Defesa no turno.;1;FORCE;Defesas variadas / Idependentes;
-135;Super Block;+25% de Defesa no turno.;3;FORCE;Defesas variadas / Idependentes;
-136;Fast Evade;+10% de Esquiva no turno.;1;FORCE;Defesas variadas / Idependentes;
-137;Super Block;+25% de Esquiva no turno.;3;FORCE;Defesas variadas / Idependentes;
-138;Deflect;Diminui 15% dos acertos de projétis físicos ou mágicos inimigos no turno.;2;FORCE;Defesas variadas / Idependentes;
-139;Super Deflect;Diminui 25% dos acertos de projétis físicos ou mágicos inimigos no turno.;4;FORCE;Defesas variadas / Idependentes;
-140;Mind Eye;Cartas de (%) de esquiva, defesa, e defesa de projéteis duram enquanto estiver parado sem se mover ou atacar, máximo 3 turnos.;3;FORCE;Defesas variadas / Idependentes;
-141;Heavy Layers;Torna o IP Físico imperfurável durante 5 turnos.;3;FORCE;Defesas variadas / Idependentes;
-142;Magic Layers;Torna o IP Mágico imperfurável durante 5 turnos.;3;FORCE;Defesas variadas / Idependentes;
-143;Shadow;Evita o primeiro ataque físico ou mágico no turno.;2;FORCE;Defesas variadas / Idependentes;
-144;Overshadow;Evita todos os ataques físicos e mágicos no turno.;5;FORCE;Defesas variadas / Idependentes;
-145;Reflect Magic;Reflete uma magia R1 ou R2 de volta ao alvo.;2;FORCE;Defesas variadas / Idependentes;
-146;Magic Mirror;Reflete uma magia no mãximo R3 de volta ao alvo.;3;FORCE;Defesas variadas / Idependentes;
-147;Sacred Mirror;Reflete uma magia no mãximo R4 de volta ao alvo.;4;FORCE;Defesas variadas / Idependentes;
-148;Magic Impact;Causa 2d6+1 (+bônus de will) de dano mágico não elemental no alvo, pode ser usado vários para acumular e lançar na hora certa.;1;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-149;Fire Ball;Causa 2d6+1 (+bônus de will) de dano mágico de fogo no alvo, passando no difícil causa burn 1d6, pode ser acumulado.;1;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-150;Fire shoot;Causa 4d6+2 (+bônus de will) de dano mágico de fogo no alvo, passando no difícil causa burn 1d6, pode ser acumulado.;2;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-151;Fire Burst;Causa6d6+4 (+bônus de will) de dano mágico de fogo no alvo, passando no difícil causa burn 1d6, pode ser acumulado.;3;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-152;Flare Blast;Causa 8d6+6 (+bônus de will) de dano mágico de fogo no alvo, passando no difícil causa burn 1d10, pode ser acumulado.;4;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-153;Water Ball;Causa 2d6+1 (+bônus de will) de dano mágico de água no alvo, passando no difícil causa recupera 1d6PV, pode ser acumulado.;1;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-154;Water Torrent ;Causa 4d6+2 (+bônus de will) de dano mágico de água no alvo, passando no difícil causa recupera 1d6PV, pode ser acumulado.;2;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-155;TidalWave;Causa 6d6+4 (+bônus de will) de dano mágico de água no alvo, passando no difícil causa recupera 1d8PV, pode ser acumulado.;3;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-156;Ocean Blast;Causa 8d6+6 (+bônus de will) de dano mágico de água no alvo, passando no difícil causa recupera 1d8PV, pode ser acumulado.;4;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-157;Wind Impact;Causa 2d6+1 (+bônus de will) de dano mágico de vento no alvo, passando no difícil empurra 5m, pode ser acumulado.;1;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-158;Wind Blade;Causa 4d6+2 (+bônus de will) de dano mágico de vento no alvo, passando no difícil empurra 5m, pode ser acumulado.;2;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-159;Wind Pulse;Causa 6d6+4 (+bônus de will) de dano mágico de vento no alvo, passando no difícil empurra 10m, pode ser acumulado.;3;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-160;Tornado;Causa 8d6+6 (+bônus de will) de dano mágico de vento no alvo, passando no difícil empurra 10m, pode ser acumulado.;4;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-161;Earth Spike;Causa 2d6+1 (+bônus de will) de dano mágico de Terra no alvo, passando no difícil tira o balanço causando penalidade de 10% nas ações, pode ser acumulado.;1;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-162;Sand Storm;Causa 4d6+2 (+bônus de will) de dano mágico de Terra no alvo, passando no difícil tira o balanço causando penalidade de 10% nas ações, pode ser acumulado.;2;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-163;Boulder Blast;Causa 6d6+4 (+bônus de will) de dano mágico de Terra no alvo, passando no difícil tira o balanço causando penalidade de 20% nas ações, pode ser acumulado.;3;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-164;EarthShake;Causa8d6+6 (+bônus de will) de dano mágico de Terra no alvo, passando no difícil tira o balanço causando penalidade de 20% nas ações, pode ser acumulado.;4;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-165;Bolt;Causa 2d6+1 (+bônus de will) de dano mágico de Raio no alvo, passando no difícil acerta mais alvos próximos, pode ser acumulado.;1;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-166;Thunder;Causa 4d6+2 (+bônus de will) de dano mágico de Raio no alvo, passando no difícil acerta mais alvos próximos, pode ser acumulado.;2;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-167;Thunderbolt;Causa 6d6+4 (+bônus de will) de dano mágico de Raio no alvo, passando no difícil acerta mais alvos próximos, pode ser acumulado.acumulado.;3;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-168;TempestRain;Causa 8d6+6 (+bônus de will) de dano mágico de Raio no alvo, passando no difícil acerta mais alvos próximos, pode ser acumulado.;4;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-169;Dark;Causa 4d6+3 (+bônus de will) de dano mágico de Trevas no alvo, passando no difícil Debuff de - 10% e desativa Buffs, pode ser acumulado.;2;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-170;Dark Lance;Causa 6d6+6 (+bônus de will) de dano mágico de Trevas no alvo, passando no difícil Debuff de - 15% e desativa Buffs, pode ser acumulado.;3;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-171;Shadow wave;Causa 8d6+8 (+bônus de will) de dano mágico de Trevas no alvo, passando no difícil Debuff de - 15% e desativa Buffs, pode ser acumulado.;4;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-172;Light;Causa 4d6+3 (+bônus de will) de dano mágico de Luz no alvo, passando no difícil recebe buff de 10% e se cura 1d6 PV.;2;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-173;Holy;Causa 6d6+6 (+bônus de will) de dano mágico de Luz no alvo, passando no difícil recebe buff de 15% e se cura 2d6 PV.;3;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-174;Sacred Blast;Causa 8d6+8 (+bônus de will) de dano mágico de Luz no alvo, passando no difícil recebe buff de 15% e se cura 2d6 PV.;4;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-175;Apocalypse;Escolhe o elemento e lança uma magia elemento que ignora resistência elemental, causa 10d6 +10 de dano, se acertar em fraqueza sempre é critico.;5;FORCE;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-176;Magic Flux;Após acertar a primeira magia, enquanto o personagem usar magia do mesmo elemento todo turno, todas vão acertar.;1;FORCE;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-177;Magic Blast;A magia se torna em área de 5m.;2;FORCE;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-178;Magic Orbs;Divide o poder da magia pela metade, porêm cria 3 orbs  mágicos com o valor que podem ser arremessados no mesmo alvo ou em diferentes.;2;FORCE;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-179;Conjuration;Ao passar o turno a magia no turno seguinte ganha +25% de acerto, pode ser acumulado 2 vezes.;2;FORCE;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-180;Concentration;Ao passar o turno condensa a magia no turno seguinte ganhando +100% de dano, pode ser acumulado 2 vezes.;3;FORCE;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-181;Magic Charge;Todas as Magias, os danos mágicos se tornan d10.;3;FORCE;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-182;Effect Boost;Todas as Magias, os efeitos são garantidos.;3;FORCE;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-183;Magic Counter;Soltar uma magia, essa carta é ativada, e o usuário pode usar sua magia carregada contra a magia do oponente, o perdedor recebe dano crítico.;3;FORCE;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-184;Crorrosive Fire;Bônus de will da magia de fogo se torna destruidor de IP físico;2;FORCE;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-185;Winter Pulse;Magias de água podem congelear inimigos ou parte deles, dependendo do tamanho.;2;FORCE;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-186;Wind Drill;Magias de vento perfuram IP mágico.;2;FORCE;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-187;Earth Vines;Magias de terra poden prender o inimigo no difícil.;2;FORCE;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-188;Magnetic;Magias de raio podem afastar ou juntar inimigos em um local.;2;FORCE;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-189;Dark Drain;Magias de trevas roubam 50% do seu dano em PV.;3;FORCE;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-190;Holy Avanger;O valor de dano recebido pelo usuário, vira dano extra na magia de Luz.;3;FORCE;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-191;Heal;Cura 2d6+1(+ bônus de will) de um alvo ou si mesmo, se passar no difícil cura + 50% extra.;1;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-192;Healing Wave;Cura 3d6+4(+ bônus de will) de um alvo ou si mesmo, se passar no difícil cura + 50% extra e cura status negativo.;2;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-193;Healing Circle;Cura 5d6+4(+ bônus de will) de um circulo de 5m em volta do alvo, se passar no difícil cura + 50% extra e cura status negativo.;3;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-194;Healing Force;Cura 7d6+4(+ bônus de will) de um circulo de 5m em volta do alvo, se passar no difícil cura + 100% extra, garante cura de status.;4;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-195;Purification;Cura qualquer status negativo.;1;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-196;Bless;Cura qualquer status negativo e causa uma banção de +10% de acerto (não estaca com outras benção) em testes durante de 3 turnos.;2;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-197;Blessing Light;Cura qualquer status negativo e causa uma banção de +15% (não estaca com outras benção)  de acerto em testes durante de 3 turnos.;3;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-198;High Blessing;Cura 8d6+4(+ bônus de will), Cura qualquer status negativo, causa uma banção de +20% (não estaca com outras benção) de acerto em testes durante de 5 turnos;5;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-199;Barrier;Cria uma Barreira em volta do usuário com 7PVS, dura indefinidamente ou até ser destruida.;1;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-200;Barrier 2;Cria uma Barreira em volta do usuário com 15PVS, dura indefinidamente ou até ser destruida.;2;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-201;Barrier 3;Cria uma Barreira em volta do usuário com 22PVS, dura indefinidamente ou até ser destruida.;3;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-202;Barrier 4;Cria uma Barreira em volta do usuário com 35PVS, dura indefinidamente ou até ser destruida.;4;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-203;Fire Barrier;Troca ou adiciona  o elemento fogo a barreira, acrescenta 5PVS, barreira causa dano total ao toque e se desfaz.;2;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-204;Water Barrier;Troca ou adiciona  o elemento Água a barreira, acrescenta 5PVS, barreira causa dano total ao toque e se desfaz.;2;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-205;Wind Barrier;Troca ou adiciona  o elemento Vento a barreira, acrescenta 5PVS, barreira causa dano total ao toque e se desfaz.;2;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-206;Earth Barrier;Troca ou adiciona  o elemento Terra a barreira, acrescenta 5PVS, barreira causa dano total ao toque e se desfaz.;2;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-207;Thunder Barrier;Troca ou adiciona  o elemento Raio a barreira, acrescenta 5PVS, barreira causa dano total ao toque e se desfaz.;2;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-208;Dark Barrier;Roca ou adiciona  o elemento trevaz a barreira, acrescenta 5PVS, barreira causa dano total ao toque e se desfaz.;2;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-209;Light Barrier;Troca ou adiciona o elemento Luz a barreira, acrescenta 5PVS, barreira causa dano total ao toque e se desfaz.;2;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-210;Accel;Rola 2d4 + bônus de will de iniciativa para um alvo, dura 3 turnos.;2;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-211;Aceleration;Rola 4d4 + bônus de will de iniciativa para um alvo, dura 3 turnos.;4;FORCE;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-212;Teleport;Se move instântaneamente para um local visível, pode ser usado como ação bônus para escapar, perde o turno seguinte.;3;FORCE;Outras magias;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-213;Magic Sense;Sente coisas sobrenaturáis em volta.;1;FORCE;Outras magias;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-214;Analyze;Analiza as cartas que o inimigo está usando.;2;FORCE;Outras magias;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-215;Dispel;Cancela uma magia no momento que ela é lançada, efeito bônus fora de seu turno, precisa estar equipada.;3;FORCE;Outras magias;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
-216;Reversal;Rouba Buffs do alvo e transfere Dubuffs seus, pode ser ativada como efeito bônus fora de seu turno, precisa estar equipada.;3;FORCE;Outras magias;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+69;ShockWave;Danos corpo a corpo causa uma onda de ataque a distância de 5m, 5 turnos;1;EFFECT;Efeitos Básicos;
+70;PowerWave;Danos corpo a corpo causa uma onda de ataque a distância de 5m, acerta todos na reta 5 turnos;2;EFFECT;Efeitos Básicos;
+71;GreatWave;Danos corpo a corpo causa uma onda de ataque a distância de 20m, acerta todos na reta 5 turnos;3;EFFECT;Efeitos Básicos;
+72;Blast Impact;Danos corpo a corpo causa uma explosão na hora do impacto de 3 metros quadrados, 1 ataque.;2;EFFECT;Efeitos Básicos;
+73;Blast Force;Danos corpo a corpo causa uma explosão na hora do impacto de 3 metros quadrados, 3 ataques.;3;EFFECT;Efeitos Básicos;
+74;Great Impact;Danos corpo a corpo causa uma explosão na hora do impacto de 10 metros quadrados, 1 ataque;4;EFFECT;Efeitos Básicos;
+75;Doom;Danos corpo a corpo causa uma onda de ataque a distância de 50m, e uma explosão na hora do impacto de 15 metros quadrados, 1 ataque.;5;EFFECT;Efeitos Básicos;
+76;Rush Combo;Dá um ataque extra no mesmo turno, mas perde o ataque do próximo turno.;1;EFFECT;Efeitos Básicos;
+77;Magic Combo;Dá um ataque extra mágico finalizador no final de seu ataque físico.;2;EFFECT;Efeitos Básicos;
+78;Combo;Dá um ataque extra no mesmo turno físico ou mágico.;3;EFFECT;Efeitos Básicos;
+79;Full Combo;Dá dois ataques extra no mesmo turno físicos ou mágicos.;4;EFFECT;Efeitos Básicos;
+80;Rapid Steps;Ganha uma ação de movimento depois do final de seu turno.;1;EFFECT;Efeitos Básicos;
+81;Dash;Suas ações de movimentos, ignoram obstáculos de terreno e altura.;2;EFFECT;Efeitos Básicos;
+82;Evading Step;Usa uma ação de movimento fora de seu turno, antes de um inimigo ou aliado executar uma ação.;3;EFFECT;Efeitos Básicos;
+83;Transpasser;Permite Transpassar se um inimigo morrer no ataque.;1;EFFECT;Efeitos Básicos;
+84;Kill Count;Permite Transpassar se um inimigo morrer no ataque, pode ser feito várias vezes.;2;EFFECT;Efeitos Básicos;
+85;Coop;Permite dar um ataque fora de seu turno, assim que um aliado atacar.(ele precisa ter uma arma de caçador);3;EFFECT;Efeitos Básicos;
+86;Cordinator;Permite dar uma ação a um aliado seu  de sua escolha no momento de seu ataque. (ele precisa ter uma arma de caçador);4;EFFECT;Efeitos Básicos;
+87;All Out Attack;Todos os efeitos de suas cartas e dos aliados, se somam no mesmo turno.;5;EFFECT;Efeitos Básicos;
+88;Cross Counter;Contra ataca ao ser acertado fisicamente.;2;EFFECT;Efeitos Básicos;
+89;Evade Counter;Contra ataca ao esquivar de um ataque.;2;EFFECT;Efeitos Básicos;
+90;Full Counter;Contra ataca ataques físicos sempre, dura 3 turnos.;4;EFFECT;Efeitos Básicos;
+91;Poison Strike;Causa Poison no ataque de 1d6 turno, dura um ataque. (pode resistir, teste de Con);1;EFFECT;Efeitos Status;
+92;Venom Bite;Causa no ataque Poison de 1d6 turno, dura um ataque. (pode resistir, teste de Con difícil);2;EFFECT;Efeitos Status;
+93;Snake Fang;Causa no ataque Poison de 2d6 turno, dura um ataque. (pode resistir, teste de Con difícil);3;EFFECT;Efeitos Status;
+94;Pralize strike;Causa paralizia (não pode se mover ou atacar)  no ataque, dura 3 turnos ou até passar em teste de Will, 1 ataque.;2;EFFECT;Efeitos Status;
+95;Paralize impact;Causa paralizia (não pode se mover ou atacar) no ataque, dura 3 turnos ou até passar em teste de Will difícil, 1 ataque.;4;EFFECT;Efeitos Status;
+96;Stun Strike;Causa Stun no acerto difícil (perde -20% em todos os testes) no ataque, dura até passar em teste de Con, 1 ataque.;1;EFFECT;Efeitos Status;
+97;Stun Blade;Causa Stun no acerto difícil (perde -20% em todos os testes) no ataque, dura até passar em teste de Con Difícil, 1 ataque.;3;EFFECT;Efeitos Status;
+98;Drain Strike;Rouba 50% de PV do dano causado, 1 ataque;2;EFFECT;Efeitos Status;
+99;Drain Escense;Rouba 100% de PV do dano causado, 1 ataque;4;EFFECT;Efeitos Status;
+100;Weak Strike;Se passar no difícil o inimigo fica enfraquecido (causa metade dos danos físicos e mágicos), Dura até passar em um teste de Will, um ataque.;1;EFFECT;Efeitos Status;
+101;Weak Touch;Se passar no difícil o inimigo fica enfraquecido (causa metade dos danos físicos e mágicos), Dura até passar em um teste de Will Difícil, um ataque.;2;EFFECT;Efeitos Status;
+102;Bleeding Slas;Se passar no difícil, causa sangramento no ataque de 1d6 turno (pode estacar), dura até se curar.;1;EFFECT;Efeitos Status;
+103;Bleeding Blad;Se passar no difícil, causa sangramento no ataque de 2d6 turno (pode estacar), dura até se curar.;3;EFFECT;Efeitos Status;
+104;Status Escense;Faz qualquer carta de status durar na arma por 5 turnos.;3;EFFECT;Efeitos Status;
+105;Condensed Escense;Faz qualquer carta de status sempre ativar o efeito de status.;3;EFFECT;Efeitos Status;
+106;Cursed Demon Escense;Causa paralizia 3 turnos, Poison 2d6, sangramento 2d6 em um unico ataque, sempre causa o efeito, e não podem ser removidos até 3 turnos.;5;EFFECT;Efeitos Status;
+107;Sky Blades;A arma voa como se tivesse vida própria, seus ataques são ação bônus (não pode colocar cartas voando e não tem bônus de força e etc), dura 5 turnos.;2;EFFECT;Efeitos Diferenciados;
+108;Wall Run;Permite andar e ficar preso na parede sem cair, dura 5 turnos;1;EFFECT;Efeitos Diferenciados;
+109;Sky Fighter;Diciona + 10M a capacidade de altura do pulo,  o personagem cai devagar anulando dano de queda e podendo se direcionar e atcar, dura 5 turnos.;2;EFFECT;Efeitos Diferenciados;
+110;Gravity Distortion;Cada ataque defendido ou acertado aumenta a gravidade sobre um alvo, causando penalidade -2 de velocidade, dura 5 turnos.;3;EFFECT;Efeitos Diferenciados;
+111;Stealth;Entra em furtividade ficando quase invisível, dura 3 Turnos, ou ao atacar.;3;EFFECT;Efeitos Diferenciados;
+112;WeakSpot;Só pode ser usada se não atacar no turno, qualquer inimigo que te atacou e você defendeu ou esquivou, você tem um critico garantido no próximo ataque se acertar (apenas uma vez).;2;EFFECT;Efeitos Diferenciados;
+113;Card Break Apha;Sacrifica junto a essa carta, e uma carta ativa Force ou Effect para anular uma carta Force ou Effect de raridade equivalente a sacrificada no inimigo, precisa acertar o ataque para o efeito ativar.;2;EFFECT;Efeitos Diferenciados;
+114;Card Break Beta;Sacrifica junto a essa carta, e uma carta ativa  Defense ou magic para anular uma carta defense ou magic de raridade equivalente a sacrificada no inimigo, precisa acertar o ataque para o efeito ativar.;2;EFFECT;Efeitos Diferenciados;
+115;Card Break Sigma;Sacrifica junto a essa carta, e uma carta ativa para anular uma carta de raridade equivalente a sacrificada no inimigo, precisa acertar o ataque para o efeito ativar.;4;EFFECT;Efeitos Diferenciados;
+116;Card Break Omega;Anula todas as cartas de um inimigo a escolha, exceto por raidade 5, precisa acertar o ataque para o efeito ativar..;5;EFFECT;Efeitos Diferenciados;
+117;Samurai Armor ;O dispositvo cria uma armadura em volta do usuário, 1IP, dura 7 Turnos.;1;DEFENSE;Defesa Básica;
+118;Shogun Armor ;O dispositvo cria uma armadura em volta do usuário, 3IP, dura 10 Turnos.;3;DEFENSE;Defesa Básica;
+119;Emperror Armor ;O dispositvo cria uma armadura em volta do usuário, 5IP e 5ip mágico, dura 10 Turnos.;5;DEFENSE;Defesa Básica;
+120;Bronze Steel;Acrescenta 2IP a armadura, diminúi 1 dos turnos totais.;1;DEFENSE;Defesa Básica;
+121;Silver Steel;Acrescenta 3IP a armadura, diminúi 1 dos turnos totais.;2;DEFENSE;Defesa Básica;
+122;Gold Steel;Acrescenta 4IP a armadura, diminúi 1 dos turnos totais.;3;DEFENSE;Defesa Básica;
+123;Platinum Steel;Acrescenta 5IP a armadura, diminúi 1 dos turnos totais.;4;DEFENSE;Defesa Básica;
+124;Magic Steel;Acrescenta 4IP mágico a armadura, diminúi 1 dos turnos totais.;1;DEFENSE;Defesa Básica;
+125;Mystic Steel;Acrescenta 6IP mágico a armadura, diminúi 1 dos turnos totais.;2;DEFENSE;Defesa Básica;
+126;Sacred Steel;Acrescenta 8iP mágico a armadura, diminúi 1 dos turnos totais.;3;DEFENSE;Defesa Básica;
+127;Ancient Steel;Acrescenta 10iP mágico a armadura, diminúi 1 dos turnos totais.;4;DEFENSE;Defesa Básica;
+128;Armor Reversal;Ao ser atacado, defendendo ou sendo acertado, seu IP Físico causa dano no inimigo, duração da armadura.;2;DEFENSE;Defesa Básica;
+129;Brute armor;Ao ser atacado, o Dano de todos os inimigos absorvidos(depende do seu IP Físico) acumulam para serem usados no próximo turno em um ataque físico.;3;DEFENSE;Defesa Básica;
+130;Magic Armor;Ao ser atacado, o Dano de todos os inimigos absorvidos(depende do seu IP mágico) acumulam para serem usados no próximo turno em um ataque mágico.;3;DEFENSE;Defesa Básica;
+131;Heal Armor;Ao ser atacado, absorve dano físico e mágico, e transforma em cura no seu turno seguinte se estiver vivo, depende de seus IPs.;4;DEFENSE;Defesa Básica;
+132;Sun Light Steel;Acrescenta 5IP físico, 10 IP mágico, dá 5 turnos para a armadura.;5;DEFENSE;Defesa Básica;
+133;Armor Overcharge;Ao ser atacado, absorve dano físico e mágico, dependendo de seus ips, os danos se tornam um para ser usado em um ataque físico ou mágico.;5;DEFENSE;Defesa Básica;
+134;Fast Block;+10% de Defesa no turno.;1;DEFENSE;Defesas variadas / Idependentes;
+135;Super Block;+25% de Defesa no turno.;3;DEFENSE;Defesas variadas / Idependentes;
+136;Fast Evade;+10% de Esquiva no turno.;1;DEFENSE;Defesas variadas / Idependentes;
+137;Super Block;+25% de Esquiva no turno.;3;DEFENSE;Defesas variadas / Idependentes;
+138;Deflect;Diminui 15% dos acertos de projétis físicos ou mágicos inimigos no turno.;2;DEFENSE;Defesas variadas / Idependentes;
+139;Super Deflect;Diminui 25% dos acertos de projétis físicos ou mágicos inimigos no turno.;4;DEFENSE;Defesas variadas / Idependentes;
+140;Mind Eye;Cartas de (%) de esquiva, defesa, e defesa de projéteis duram enquanto estiver parado sem se mover ou atacar, máximo 3 turnos.;3;DEFENSE;Defesas variadas / Idependentes;
+141;Heavy Layers;Torna o IP Físico imperfurável durante 5 turnos.;3;DEFENSE;Defesas variadas / Idependentes;
+142;Magic Layers;Torna o IP Mágico imperfurável durante 5 turnos.;3;DEFENSE;Defesas variadas / Idependentes;
+143;Shadow;Evita o primeiro ataque físico ou mágico no turno.;2;DEFENSE;Defesas variadas / Idependentes;
+144;Overshadow;Evita todos os ataques físicos e mágicos no turno.;5;DEFENSE;Defesas variadas / Idependentes;
+145;Reflect Magic;Reflete uma magia R1 ou R2 de volta ao alvo.;2;DEFENSE;Defesas variadas / Idependentes;
+146;Magic Mirror;Reflete uma magia no mãximo R3 de volta ao alvo.;3;DEFENSE;Defesas variadas / Idependentes;
+147;Sacred Mirror;Reflete uma magia no mãximo R4 de volta ao alvo.;4;DEFENSE;Defesas variadas / Idependentes;
+148;Magic Impact;Causa 2d6+1 (+bônus de will) de dano mágico não elemental no alvo, pode ser usado vários para acumular e lançar na hora certa.;1;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+149;Fire Ball;Causa 2d6+1 (+bônus de will) de dano mágico de fogo no alvo, passando no difícil causa burn 1d6, pode ser acumulado.;1;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+150;Fire shoot;Causa 4d6+2 (+bônus de will) de dano mágico de fogo no alvo, passando no difícil causa burn 1d6, pode ser acumulado.;2;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+151;Fire Burst;Causa6d6+4 (+bônus de will) de dano mágico de fogo no alvo, passando no difícil causa burn 1d6, pode ser acumulado.;3;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+152;Flare Blast;Causa 8d6+6 (+bônus de will) de dano mágico de fogo no alvo, passando no difícil causa burn 1d10, pode ser acumulado.;4;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+153;Water Ball;Causa 2d6+1 (+bônus de will) de dano mágico de água no alvo, passando no difícil causa recupera 1d6PV, pode ser acumulado.;1;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+154;Water Torrent ;Causa 4d6+2 (+bônus de will) de dano mágico de água no alvo, passando no difícil causa recupera 1d6PV, pode ser acumulado.;2;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+155;TidalWave;Causa 6d6+4 (+bônus de will) de dano mágico de água no alvo, passando no difícil causa recupera 1d8PV, pode ser acumulado.;3;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+156;Ocean Blast;Causa 8d6+6 (+bônus de will) de dano mágico de água no alvo, passando no difícil causa recupera 1d8PV, pode ser acumulado.;4;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+157;Wind Impact;Causa 2d6+1 (+bônus de will) de dano mágico de vento no alvo, passando no difícil empurra 5m, pode ser acumulado.;1;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+158;Wind Blade;Causa 4d6+2 (+bônus de will) de dano mágico de vento no alvo, passando no difícil empurra 5m, pode ser acumulado.;2;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+159;Wind Pulse;Causa 6d6+4 (+bônus de will) de dano mágico de vento no alvo, passando no difícil empurra 10m, pode ser acumulado.;3;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+160;Tornado;Causa 8d6+6 (+bônus de will) de dano mágico de vento no alvo, passando no difícil empurra 10m, pode ser acumulado.;4;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+161;Earth Spike;Causa 2d6+1 (+bônus de will) de dano mágico de Terra no alvo, passando no difícil tira o balanço causando penalidade de 10% nas ações, pode ser acumulado.;1;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+162;Sand Storm;Causa 4d6+2 (+bônus de will) de dano mágico de Terra no alvo, passando no difícil tira o balanço causando penalidade de 10% nas ações, pode ser acumulado.;2;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+163;Boulder Blast;Causa 6d6+4 (+bônus de will) de dano mágico de Terra no alvo, passando no difícil tira o balanço causando penalidade de 20% nas ações, pode ser acumulado.;3;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+164;EarthShake;Causa8d6+6 (+bônus de will) de dano mágico de Terra no alvo, passando no difícil tira o balanço causando penalidade de 20% nas ações, pode ser acumulado.;4;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+165;Bolt;Causa 2d6+1 (+bônus de will) de dano mágico de Raio no alvo, passando no difícil acerta mais alvos próximos, pode ser acumulado.;1;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+166;Thunder;Causa 4d6+2 (+bônus de will) de dano mágico de Raio no alvo, passando no difícil acerta mais alvos próximos, pode ser acumulado.;2;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+167;Thunderbolt;Causa 6d6+4 (+bônus de will) de dano mágico de Raio no alvo, passando no difícil acerta mais alvos próximos, pode ser acumulado.acumulado.;3;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+168;TempestRain;Causa 8d6+6 (+bônus de will) de dano mágico de Raio no alvo, passando no difícil acerta mais alvos próximos, pode ser acumulado.;4;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+169;Dark;Causa 4d6+3 (+bônus de will) de dano mágico de Trevas no alvo, passando no difícil Debuff de - 10% e desativa Buffs, pode ser acumulado.;2;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+170;Dark Lance;Causa 6d6+6 (+bônus de will) de dano mágico de Trevas no alvo, passando no difícil Debuff de - 15% e desativa Buffs, pode ser acumulado.;3;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+171;Shadow wave;Causa 8d6+8 (+bônus de will) de dano mágico de Trevas no alvo, passando no difícil Debuff de - 15% e desativa Buffs, pode ser acumulado.;4;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+172;Light;Causa 4d6+3 (+bônus de will) de dano mágico de Luz no alvo, passando no difícil recebe buff de 10% e se cura 1d6 PV.;2;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+173;Holy;Causa 6d6+6 (+bônus de will) de dano mágico de Luz no alvo, passando no difícil recebe buff de 15% e se cura 2d6 PV.;3;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+174;Sacred Blast;Causa 8d6+8 (+bônus de will) de dano mágico de Luz no alvo, passando no difícil recebe buff de 15% e se cura 2d6 PV.;4;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+175;Apocalypse;Escolhe o elemento e lança uma magia elemento que ignora resistência elemental, causa 10d6 +10 de dano, se acertar em fraqueza sempre é critico.;5;MAGIC;Dano Básico;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+176;Magic Flux;Após acertar a primeira magia, enquanto o personagem usar magia do mesmo elemento todo turno, todas vão acertar.;1;MAGIC;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+177;Magic Blast;A magia se torna em área de 5m.;2;MAGIC;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+178;Magic Orbs;Divide o poder da magia pela metade, porêm cria 3 orbs  mágicos com o valor que podem ser arremessados no mesmo alvo ou em diferentes.;2;MAGIC;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+179;Conjuration;Ao passar o turno a magia no turno seguinte ganha +25% de acerto, pode ser acumulado 2 vezes.;2;MAGIC;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+180;Concentration;Ao passar o turno condensa a magia no turno seguinte ganhando +100% de dano, pode ser acumulado 2 vezes.;3;MAGIC;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+181;Magic Charge;Todas as Magias, os danos mágicos se tornan d10.;3;MAGIC;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+182;Effect Boost;Todas as Magias, os efeitos são garantidos.;3;MAGIC;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+183;Magic Counter;Soltar uma magia, essa carta é ativada, e o usuário pode usar sua magia carregada contra a magia do oponente, o perdedor recebe dano crítico.;3;MAGIC;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+184;Crorrosive Fire;Bônus de will da magia de fogo se torna destruidor de IP físico;2;MAGIC;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+185;Winter Pulse;Magias de água podem congelear inimigos ou parte deles, dependendo do tamanho.;2;MAGIC;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+186;Wind Drill;Magias de vento perfuram IP mágico.;2;MAGIC;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+187;Earth Vines;Magias de terra poden prender o inimigo no difícil.;2;MAGIC;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+188;Magnetic;Magias de raio podem afastar ou juntar inimigos em um local.;2;MAGIC;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+189;Dark Drain;Magias de trevas roubam 50% do seu dano em PV.;3;MAGIC;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+190;Holy Avanger;O valor de dano recebido pelo usuário, vira dano extra na magia de Luz.;3;MAGIC;Modificador de Magia;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+191;Heal;Cura 2d6+1(+ bônus de will) de um alvo ou si mesmo, se passar no difícil cura + 50% extra.;1;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+192;Healing Wave;Cura 3d6+4(+ bônus de will) de um alvo ou si mesmo, se passar no difícil cura + 50% extra e cura status negativo.;2;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+193;Healing Circle;Cura 5d6+4(+ bônus de will) de um circulo de 5m em volta do alvo, se passar no difícil cura + 50% extra e cura status negativo.;3;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+194;Healing Force;Cura 7d6+4(+ bônus de will) de um circulo de 5m em volta do alvo, se passar no difícil cura + 100% extra, garante cura de status.;4;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+195;Purification;Cura qualquer status negativo.;1;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+196;Bless;Cura qualquer status negativo e causa uma banção de +10% de acerto (não estaca com outras benção) em testes durante de 3 turnos.;2;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+197;Blessing Light;Cura qualquer status negativo e causa uma banção de +15% (não estaca com outras benção)  de acerto em testes durante de 3 turnos.;3;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+198;High Blessing;Cura 8d6+4(+ bônus de will), Cura qualquer status negativo, causa uma banção de +20% (não estaca com outras benção) de acerto em testes durante de 5 turnos;5;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+199;Barrier;Cria uma Barreira em volta do usuário com 7PVS, dura indefinidamente ou até ser destruida.;1;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+200;Barrier 2;Cria uma Barreira em volta do usuário com 15PVS, dura indefinidamente ou até ser destruida.;2;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+201;Barrier 3;Cria uma Barreira em volta do usuário com 22PVS, dura indefinidamente ou até ser destruida.;3;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+202;Barrier 4;Cria uma Barreira em volta do usuário com 35PVS, dura indefinidamente ou até ser destruida.;4;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+203;Fire Barrier;Troca ou adiciona  o elemento fogo a barreira, acrescenta 5PVS, barreira causa dano total ao toque e se desfaz.;2;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+204;Water Barrier;Troca ou adiciona  o elemento Água a barreira, acrescenta 5PVS, barreira causa dano total ao toque e se desfaz.;2;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+205;Wind Barrier;Troca ou adiciona  o elemento Vento a barreira, acrescenta 5PVS, barreira causa dano total ao toque e se desfaz.;2;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+206;Earth Barrier;Troca ou adiciona  o elemento Terra a barreira, acrescenta 5PVS, barreira causa dano total ao toque e se desfaz.;2;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+207;Thunder Barrier;Troca ou adiciona  o elemento Raio a barreira, acrescenta 5PVS, barreira causa dano total ao toque e se desfaz.;2;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+208;Dark Barrier;Roca ou adiciona  o elemento trevaz a barreira, acrescenta 5PVS, barreira causa dano total ao toque e se desfaz.;2;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+209;Light Barrier;Troca ou adiciona o elemento Luz a barreira, acrescenta 5PVS, barreira causa dano total ao toque e se desfaz.;2;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+210;Accel;Rola 2d4 + bônus de will de iniciativa para um alvo, dura 3 turnos.;2;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+211;Aceleration;Rola 4d4 + bônus de will de iniciativa para um alvo, dura 3 turnos.;4;MAGIC;Suport;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+212;Teleport;Se move instântaneamente para um local visível, pode ser usado como ação bônus para escapar, perde o turno seguinte.;3;MAGIC;Outras magias;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+213;Magic Sense;Sente coisas sobrenaturáis em volta.;1;MAGIC;Outras magias;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+214;Analyze;Analiza as cartas que o inimigo está usando.;2;MAGIC;Outras magias;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+215;Dispel;Cancela uma magia no momento que ela é lançada, efeito bônus fora de seu turno, precisa estar equipada.;3;MAGIC;Outras magias;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
+216;Reversal;Rouba Buffs do alvo e transfere Dubuffs seus, pode ser ativada como efeito bônus fora de seu turno, precisa estar equipada.;3;MAGIC;Outras magias;Cartas mágicas iguais podem se somar para ser usadas juntas em uma magia só
