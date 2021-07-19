@@ -1,9 +1,13 @@
 @echo off
 ::--------------------------------------------------------------------------------
 ::  Handle child project build
-::  RRPG's SDK need to have all scripts in main project folder
-::  To avoid we have two versions of the same scripts,
-::  lets copy base project scripts to this project's folder
+::  
+::  RRPG's SDK need to have all compiled files in same project folder.
+::  
+::  To avoid having outdated versions of the same files between projects,
+::  this script will copy base project files to this project's folder,
+::  compile and install, and will remove it to keep the original design
+::  of the project.
 ::--------------------------------------------------------------------------------
 
 set proj_base=Ficha Base
