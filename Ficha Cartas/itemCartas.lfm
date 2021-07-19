@@ -19,8 +19,11 @@
 		.Margin {
 			margins: {right=5};
 		}
+		.Tipo {
+			width: 20;
+		}
 		.Nome {
-			width: 300;
+			width: 275;
 		}
 		.Raridade {
 			width: 50;
@@ -38,6 +41,11 @@
 		<edit visible="false" enabled="false" field="descricaoCarta"/> <!-- Descrição da Carta -->
 		
 		<!-- Campos visíveis -->
+		<!-- Tipo da Carta -->
+		<flowLayout class="Tipo Margin" align="left" autoHeight="true" maxControlsPerLine="1">
+			<label class="Tipo Hint" field="tipoCarta"/>
+		</flowLayout>
+
 		<!-- Nome da Carta -->
 		<flowLayout class="Nome Margin" align="left" autoHeight="true" maxControlsPerLine="1">
 			<label class="Nome Hint" text="Nome"/>
@@ -49,7 +57,7 @@
 			</dataLink>
 		</flowLayout>
 
-		<!-- Pontos de custo da Carta -->
+		<!-- Raridade da Carta -->
 		<flowLayout class="Raridade Margin" align="left" autoHeight="true" maxControlsPerLine="1">
 			<label class="Raridade Hint" text="Raridade"/>
 			<edit class="Raridade" field="raridadeCarta" horzTextAlign="center"/>
@@ -65,7 +73,7 @@
 			<rectangle height="25" width="25" opacity="0"/>
 			<button height="25" width="25" text="?">
 				<event name="onClick">
-					Cartas:alternarVisibilidadeDetalhes(sheet);
+					Cartas:alternarVisibilidadeDetalhes();
 				</event>
 			</button>
 		</flowLayout>		

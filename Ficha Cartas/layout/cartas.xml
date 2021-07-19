@@ -32,12 +32,12 @@
 			<rectangle align="top" color="#e6e6e6" xradius="10" yradius="10" height="200" padding="{top=3, left=3, right=3, bottom=3}">
 				
 				<layout align="top" height="30" margins="{bottom=4}">
-					<edit align="client" field="nomeCartas" enabled="false" transparent="true" fontColor="black"/>
+					<edit align="client" field="nomeCarta" enabled="false" transparent="true" fontColor="black"/>
 				</layout>                       
 
 				<layout align="top" height="130">
 					<layout align="client" margins="{left=2}">
-						<textEditor align="top" field="descricaoCartas" height="150" readOnly="true"  transparent="true" fontColor="black"/>
+						<textEditor align="top" field="descricaoCarta" height="150" readOnly="true"  transparent="true" fontColor="black"/>
 					</layout>                      
 				</layout>
 			</rectangle>

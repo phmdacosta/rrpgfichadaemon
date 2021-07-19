@@ -36,7 +36,7 @@ function Cartas:getDBContent()
 end
 
 function Cartas.lerArquivoDeDados()
-    return  SQL.readFile(CARTAS_DATA_PATH);
+    return SQL.readFile(CARTAS_DATA_PATH);
 end;
 
 function Cartas:carregarTodos()
@@ -44,8 +44,9 @@ function Cartas:carregarTodos()
 
     local content = Cartas.lerArquivoDeDados();
     if content ~= nil then
+        content.name = 'db_cartas';
         self.dbContent = content;
-        local objects = content:getObjects();
+        local objects = self.dbContent:getObjects();
         for i = 1, #objects do
             table.insert(self.dbItens, objects[i])
         end;
@@ -93,7 +94,7 @@ function Cartas.removerCartas(sheet, node)
     end;
 end;
 
-function Cartas:alternarVisibilidadeDetalhes(sheetItem)
+function Cartas:alternarVisibilidadeDetalhes()
     local parentForm = Cartas:getForm();
 
     if parentForm.boxDetalhesCartas.node == parentForm.listCartas.selectedNode then
@@ -106,30 +107,35 @@ end;
 
 function Cartas:procurarCarta(sheetItem)
     if sheetItem ~= nil 
-        and sheetItem.nomeCartas ~= nil 
-        and sheetItem.nomeCartas ~= '' then
+        and sheetItem.nomeCarta ~= nil 
+        and sheetItem.nomeCarta ~= '' then
 
             local achou = false;
-            local dbItens = Cartas:getDBItens();
+            local dbContent = Cartas:getDBContent();
+            if dbContent ~= nil then
+                local dbItens = dbContent:getObjects();
 
-            -- Ordenamos a lista por ordem alfabetica para facilitar a busca do nome
-            table.sort(dbItens, function (left, right)
-                return left.nome < right.nome;
-            end);
+                -- No caso das cartas vamos ordernar pela ordem que o mestre definiu no documento
+                table.sort(dbItens, function (left, right)
+                    return left.id < right.id;
+                end);
 
-            for _,a in ipairs(dbItens) do
-                if a.nome == sheetItem.nomeCartas 
-                    or string.find(a.nome, sheetItem.nomeCartas) then
-                        achou = true;
-                        sheetItem.idCartas = a.id;
-                        sheetItem.nomeCartas = a.nome;
-                        sheetItem.descricaoCartas = a.descricao;
-                        break;
+                for _,c in ipairs(dbItens) do
+                    if c.nome == sheetItem.nomeCarta 
+                        or string.find(c.nome, sheetItem.nomeCarta) then
+                            achou = true;
+                            sheetItem.idCarta = c.id;
+                            sheetItem.nomeCarta = c.nome;
+                            sheetItem.descricaoCarta = c.descricao;
+                            sheetItem.raridadeCarta = c.raridade;
+                            sheetItem.tipoCarta = c.tipo:sub(1,1); -- Apenas a primeira letra
+                            break;
+                    end;
                 end;
             end;
 
             if not achou then
-                showMessage('Não foi possível encontrar a carta \''..sheetItem.nomeCartas
+                showMessage('Não foi possível encontrar a carta \''..sheetItem.nomeCarta
                             ..'\'. Verifique se o nome está escrito corretamente com todas as pontuações e acentos');
             end
     end;
@@ -137,35 +143,36 @@ end;
 
 function Cartas:atualizarComRaridade(sheetItem)
     if sheetItem ~= nil 
-        and sheetItem.raridadeCartas ~= nil 
-        and sheetItem.raridadeCartas ~= '' then
+        and sheetItem.raridadeCarta ~= nil 
+        and sheetItem.raridadeCarta ~= '' then
 
             local achou = false;
             local dbContent = Cartas:getDBContent();
             local dbItens = dbContent:getObjects();
 
             for _,ca in ipairs(dbItens) do
-                if ca.nome == sheetItem.nomeCartas 
-                    and tonumber(ca.raridade) == tonumber(sheetItem.raridadeCartas) then
+                if ca.nome == sheetItem.nomeCarta 
+                    and tonumber(ca.raridade) == tonumber(sheetItem.raridadeCarta) then
                         achou = true;
-                        sheetItem.idCartas = ca.id;
-                        sheetItem.nomeCartas = ca.nome;
+                        sheetItem.idCarta = ca.id;
+                        sheetItem.nomeCarta = ca.nome;
                         local descricao = ca.descricao;
-                        if ca.tipo ~= nil and ca.tipo ~= '' then
-                            descricao = ca.tipo..' card\n\n'..descricao;
-                        end;
                         if ca.subTipo ~= nil and ca.subTipo ~= '' then
                             descricao = ca.subTipo..'\n\n'..descricao;
+                        end;
+                        if ca.tipo ~= nil and ca.tipo ~= '' then
+                            descricao = Util.capitalize(ca.tipo)..' Card\n\n'..descricao;
                         end;
                         if ca.obs ~= nil and ca.obs ~= '' then
                             descricao = descricao..'\n\n('..ca.obs..')';
                         end;
-                        sheetItem.descricaoCartas = descricao;
+                        sheetItem.descricaoCarta = descricao;
                 end;
             end;
 
             if not achou then
-                showMessage('Não foi possível encontrar o Cartasoramento '..sheetItem.nomeCartas..' custando '..sheetItem.pontosCartas..' pontos');
+                showMessage('Não foi possível encontrar a carta '..sheetItem.nomeCarta..
+                            ' com raridade '..sheetItem.raridadeCarta);
             end
     end;
 end;

@@ -125,6 +125,10 @@
                     <import file="layout/pericias.xml"/>
                 </tab>
 
+				<tab title="Cartas">
+                    <import file="layout/cartas.xml"/>
+                </tab>
+
 				<tab title="Background">
                     <import file="layout/background.xml"/>
                 </tab>
