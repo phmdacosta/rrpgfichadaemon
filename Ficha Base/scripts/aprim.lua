@@ -44,6 +44,7 @@ function Aprim:carregarTodos()
 
     local content = Aprim.lerArquivoDeDados();
     if content ~= nil then
+        content.name = 'db_aprim';
         self.dbContent = content;
         local objects = content:getObjects();
         for i = 1, #objects do

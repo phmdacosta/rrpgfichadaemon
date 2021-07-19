@@ -3,6 +3,7 @@ require('util.lua')
 SQL = {}
 
 Content = {
+    name = nil,
     rawHeader = nil,
     header = {},
     rawData = {},
@@ -63,15 +64,15 @@ function SQL.readFile(path)
         if(filestream ~= nil) then
             local rawContent = filestream:readBinary("ansi");
             local lines = splitLines(rawContent, "[^\r\n]+");
-            content = Content;
+            content = Content:new();
 
             -- setting headers
-            Content.rawHeader = lines[1];
-            Content.header = getHeaderFromRaw(lines[1]);
+            content.rawHeader = lines[1];
+            content.header = getHeaderFromRaw(lines[1]);
 
             --setting data
             for i = 2, #lines do
-                Content.rawData[i-1] = lines[i];
+                content.rawData[i-1] = lines[i];
                 local obj = getObjectFromRaw(content.rawHeader, lines[i]);
                 if obj ~= nil and obj.id ~= nil and obj.nome ~= nil then
                     insertObjectIfNotExist(content, Util.copy(obj));
@@ -84,6 +85,7 @@ end;
 
 -- Content functions
 function Content:new()
+    self.name = nil
     self.rawHeader = nil
     self.header = {}
     self.rawData = {}
