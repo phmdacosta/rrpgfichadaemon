@@ -13,6 +13,11 @@
 			horzTextAlign: center;
 			fontSize: 10;
 		}
+		.Info {
+			horzTextAlign: center;
+			vertTextAlign: center;
+			fontSize: 14;
+		}
 		.Line {
 			width: 450;
 		}
@@ -37,13 +42,14 @@
 		</flowLayout>
 
 		<!-- Campos não visíveis para guarda informação -->
-		<edit visible="false" enabled="false" field="idCarta"/> <!-- ID da Carta -->
-		<edit visible="false" enabled="false" field="descricaoCarta"/> <!-- Descrição da Carta -->
+		<label visible="false" field="idCarta"/> <!-- ID da Carta -->
+		<label visible="false" field="descricaoCarta"/> <!-- Descrição da Carta -->
 		
 		<!-- Campos visíveis -->
 		<!-- Tipo da Carta -->
 		<flowLayout class="Tipo Margin" align="left" autoHeight="true" maxControlsPerLine="1">
-			<label class="Tipo Hint" field="tipoCarta"/>
+			<label class="Tipo Hint" text=""/>
+			<label class="Tipo Info" field="tipoCarta"/>
 		</flowLayout>
 
 		<!-- Nome da Carta -->
