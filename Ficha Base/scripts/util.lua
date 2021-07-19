@@ -32,13 +32,18 @@ end
 
 function Util.startsWith(str, start)
     return str:sub(1, #start) == start
- end
+end
 
- function Util.endsWith(str, ending)
+function Util.endsWith(str, ending)
     return ending == "" or str:sub(-#ending) == ending
- end
+end
 
- function Util.orderTableAlphabetical(t, fieldName)
+function Util.capitalize(str)
+    local result = string.lower(str)
+    return (result:gsub("^%l", string.upper))
+end
+
+ function Util.orderTableAsc(t, fieldName)
     table.sort(t, function (left, right)
         return left[fieldName] < right[fieldName]
     end)

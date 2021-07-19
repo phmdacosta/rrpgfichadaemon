@@ -45,7 +45,7 @@ function Aprim:carregarTodos()
     local content = Aprim.lerArquivoDeDados();
     if content ~= nil then
         content.name = 'db_aprim';
-        self.dbContent = content;
+        self.dbContent = Util.copy(content);
         local objects = content:getObjects();
         for i = 1, #objects do
             table.insert(self.dbItens, objects[i])
@@ -125,16 +125,19 @@ function Aprim:procurarAprim(sheetItem)
             local achou = false;
             local dbItens = Aprim:getDBItens();
 
-            -- Ordenamos a lista por ordem alfabetica para facilitar a busca do nome
-            Util.orderTableAlphabetical(dbItens, 'nome');
+            -- Ordenamos a lista por ordem alfabetica e pontos para facilitar a busca do nome
+            Util.orderTableAsc(dbItens, 'nome');
 
             for _,a in ipairs(dbItens) do
-                if a.nome == sheetItem.nomeAprim 
-                    or string.find(a.nome, sheetItem.nomeAprim) then
+                if (a.nome == sheetItem.nomeAprim 
+                    or string.find(a.nome, sheetItem.nomeAprim))
+                    and a.pontos ~= nil and tonumber(a.pontos) > 0 then
                         achou = true;
                         sheetItem.idAprim = a.id;
                         sheetItem.nomeAprim = a.nome;
                         sheetItem.descricaoAprim = a.descricao;
+                        --sheetItem.pontosAprim = a.pontos;
+                        --Aprim:atualizarComPontos(sheetItem);
                         break;
                 end;
             end;
@@ -171,8 +174,8 @@ function Aprim:atualizarComPontos(sheetItem)
                         local refFieldName = 'id_ref_aprim';
                         if a[refFieldName] ~= nil and tonumber(a[refFieldName]) > 0 then
                             local parents =  Aprim:getAllParents(dbContent, a.id, refFieldName);
-                            for _,p in ipairs(parents) do
 
+                            for _,p in ipairs(parents) do
                                 if p.descricao == '' then
                                     sheetItem.descricaoAprim = p.descricao..sheetItem.descricaoAprim;
                                 else
@@ -203,23 +206,19 @@ function Aprim:atualizarComPontos(sheetItem)
 end;
 
 function Aprim:getAllParents(dbContent, childId, refFieldName)
-    local parents = nil;
+    local parents = {};
 
     if childId ~= nil then
         local c = dbContent:getObjectById(childId);
-
-        if c ~= nil then
-            if c[refFieldName] ~= nil then
-                parents = {}
-            end
-    
+        if c ~= nil and c[refFieldName] ~= nil then
             repeat
                 local parent = dbContent:getObjectById(c[refFieldName]);
                 if parent ~= nil then
                     table.insert(parents, parent);
                     c = Util.copy(parent);
                 end;
-            until c == nil or c[refFieldName] == nil or c[refFieldName] == '' or c[refFieldName] == '0'
+            until c == nil or c[refFieldName] == nil 
+                    or c[refFieldName] == '' or c[refFieldName] == '0';
         end;
     end;
 

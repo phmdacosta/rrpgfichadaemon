@@ -85,12 +85,15 @@ end;
 
 -- Content functions
 function Content:new()
-    self.name = nil
-    self.rawHeader = nil
-    self.header = {}
-    self.rawData = {}
-    self.objMap = {}
-    return self
+    local newObj = {}
+    newObj.name = nil
+    newObj.rawHeader = nil
+    newObj.header = {}
+    newObj.rawData = {}
+    newObj.objMap = {}
+    setmetatable(newObj, self)
+    self.__index = self
+    return newObj
 end;
 
 function Content:getObjects()
@@ -103,7 +106,7 @@ end;
 
 
 function Content:getObjectById(id)
-    return Content:getObject('id', id);
+    return self:getObject('id', id);
 end;
 
 
