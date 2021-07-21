@@ -56,9 +56,17 @@ local function insertObjectIfNotExist(content, data)
     end
 end
 
+function SQL.getSeparator()
+    return SEPARATOR;
+end
+
+function SQL.exists(path)
+    return VHD.fileExists(path);
+end
+
 function SQL.readFile(path)
     local content = nil;
-    if VHD.fileExists(path) then
+    if SQL.exists(path) then
         local filestream = VHD.openFile(path);
 
         if(filestream ~= nil) then
@@ -78,9 +86,16 @@ function SQL.readFile(path)
                     insertObjectIfNotExist(content, Util.copy(obj));
                 end
             end
+            filestream:close()
         end;
     end;
     return content;
+end;
+
+function SQL.save(path, content)
+    local filestream = VHD.openFile(path, "w+");
+    filestream:writeBase64(content);
+    filestream:close();
 end;
 
 -- Content functions

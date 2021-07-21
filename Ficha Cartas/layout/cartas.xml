@@ -13,14 +13,18 @@
 
 	<!-- Botão adicionar -->
 	<button align="left" height="25" text="Novo" width="80" onClick="Cartas:adicionarCartas(sheet, self);"/>
+	<button align="left" height="25" text="Puxar carta" width="80" margins="{left=4}" onClick="Cartas:puxarCarta(sheet);"/>
 	<flowLineBreak/>
 
 	<!-- Lista itens -->
 	<layout width="450">
 		<recordList name="listCartas" field="recordListCartas" templateForm="frmItemCartas"
 						top="5" width="450" autoHeight="true">
+			<event name="onItemAdded">
+				Cartas:handleObserver(sheet, node);
+			</event>
 			<event name="onItemRemoved">
-				Cartas.removerCartas(sheet, node);
+				Cartas:removerCartas(sheet, node);
 			</event>
 		</recordList>
 	</layout>

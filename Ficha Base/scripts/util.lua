@@ -48,3 +48,12 @@ end
         return left[fieldName] < right[fieldName]
     end)
  end
+
+ function Util.isEmptyTable(t)
+     for _,v in pairs(t) do
+         if v ~= nil then
+             return false;
+         end
+     end
+     return true;
+ end
