@@ -139,3 +139,5 @@ function Content:getObject(column, value)
 
     return nil;
 end;
+
+return SQL;

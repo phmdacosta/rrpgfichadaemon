@@ -18,7 +18,7 @@
 		<layout class="ProxHorizon" align="left">
 			<label text="EXP:"/>
 			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="exp"/>
-			<dataLink field="level" defaultValue="0"/>
+			<dataLink field="exp" defaultValue="0"/>
 		</layout>
 	</layout>
 	<flowLineBreak lineSpacing="10"/>

@@ -7,3 +7,4 @@ Mensagens = {
     rolando = 'Rolando ',
 }
 
+return Mensagens;

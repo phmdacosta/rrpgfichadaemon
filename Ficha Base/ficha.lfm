@@ -112,7 +112,7 @@
 			<tabControl class="LayoutExterno">
                 <tab title="Base">
                     <import file="layout/cabecalho.xml"/>
-					<import file="layout/Atributos.xml"/>
+					<import file="layout/atributos.xml"/>
 					<import file="layout/armadura.xml"/>
 					<import file="layout/armas.xml"/>
 				</tab>
@@ -127,6 +127,10 @@
 
 				<tab title="Background">
                     <import file="layout/background.xml"/>
+                </tab>
+
+				<tab title="Export">
+                    <import file="layout/export.xml"/>
                 </tab>
         	</tabControl>
 		</flowLayout>
