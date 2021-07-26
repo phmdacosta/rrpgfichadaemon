@@ -132,6 +132,10 @@
 				<tab title="Background">
                     <import file="layout/background.xml"/>
                 </tab>
+
+				<tab title="Export">
+                    <import file="layout/export.xml"/>
+                </tab>
         	</tabControl>
 		</flowLayout>
 	</scrollBox>

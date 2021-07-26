@@ -246,7 +246,7 @@ function Cartas:puxarCarta(sheet)
         math.randomseed(os.time());
         local initId = math.random(1, max);
         local nextId = initId;
-        --showMessage(self.cartasObservers[nextId])
+        
         for _=1,max do
             local carta = sheet.listaCartas[self.getNomeItem(nextId)];
             showMessage(Utils.tableToStr(carta))
@@ -287,4 +287,54 @@ function Cartas.alternarAbilitarCampos(itemForm, bool)
         itemForm.raridadeCartaLayout.enabled = bool;
         itemForm.sideDeckLayout.enabled = bool;
     end
+end;
+
+local function exportCarta(carta)
+    local txt = Text:new();
+
+    if carta ~= nil then
+            txt:appendLine(carta.nomeCarta);
+            txt:append(' ('..Util.handleNil(carta.tipoCarta)..')');
+            txt:append('    R: ');
+            txt:append(carta.raridadeCarta);
+    end;
+
+    return txt:toString();
+end;
+
+local function cartaNotEmpty(carta)
+    return carta ~= nil and Util.isTable(carta) and carta.nomeCarta ~= nil;
 end
+
+function Cartas.export(sheet)
+    local txt = Text:new();
+    txt:appendLine('----- Cartas -----\n');
+
+    if sheet.listaCartas ~= nil then
+        -- Listar Side Deck
+        txt:appendLine('Side Deck:');
+        for k,_ in pairs(sheet.listaCartas) do
+            local carta = sheet.listaCartas[k];
+            if cartaNotEmpty(carta) and carta.sideDeck then
+                txt:appendLine(exportCarta(carta));
+            end;
+        end;
+
+        txt:breakLine();
+
+        -- Listar Deck
+        txt:appendLine('Deck:');
+        for k,_ in pairs(sheet.listaCartas) do
+            local carta = sheet.listaCartas[k];
+            if cartaNotEmpty(carta) and not carta.sideDeck then
+                txt:appendLine(exportCarta(carta));
+            end;
+        end;
+    end;
+
+    return txt:toString();
+end;
+
+
+
+return Cartas;
