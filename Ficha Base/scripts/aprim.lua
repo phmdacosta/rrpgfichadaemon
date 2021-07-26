@@ -57,7 +57,7 @@ function Aprim.getNomeItem(index)
     return "aprim" .. index;
 end;
 
-function Aprim:adicionarAprim(sheet, recordList)
+function Aprim:adicionarAprim(sheet, form)
     if sheet.listaAprim == nil then
         sheet.listaAprim = {length=0}
     end;
@@ -66,7 +66,7 @@ function Aprim:adicionarAprim(sheet, recordList)
         self.aprimObservers = {length=0}
     end;
 
-    local node = recordList.listAprim:append();
+    local node = form.listAprim:append();
 
     if node ~= nil then
         sheet.listaAprim.length = sheet.listaAprim.length + 1;
@@ -224,3 +224,25 @@ function Aprim:getAllParents(dbContent, childId, refFieldName)
 
     return parents;
 end;
+
+function Aprim.export(sheet)
+    local txt = Text:new();
+    txt:appendLine('----- Aprimoramentos -----\n');
+
+    if sheet.listaAprim ~= nil then
+        for k,_ in pairs(sheet.listaAprim) do
+            local aprim = sheet.listaAprim[k];
+            if aprim ~= nil 
+                and Util.isTable(aprim) 
+                and aprim.nomeAprim ~= nil then
+                    txt:appendLine(aprim.nomeAprim)
+                    txt:append(' ')
+                    txt:append(aprim.pontosAprim)
+            end;
+        end;
+    end;
+
+    return txt:toString();
+end;
+
+return Aprim;

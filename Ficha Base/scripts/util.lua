@@ -43,13 +43,13 @@ function Util.capitalize(str)
     return (result:gsub("^%l", string.upper))
 end
 
- function Util.orderTableAsc(t, fieldName)
+function Util.orderTableAsc(t, fieldName)
     table.sort(t, function (left, right)
         return left[fieldName] < right[fieldName]
     end)
  end
 
- function Util.isEmptyTable(t)
+function Util.isEmptyTable(t)
      for _,v in pairs(t) do
          if v ~= nil then
              return false;
@@ -57,3 +57,9 @@ end
      end
      return true;
  end
+
+function Util.isTable(obj)
+    return type(obj) == 'table';
+end
+
+ return Util;

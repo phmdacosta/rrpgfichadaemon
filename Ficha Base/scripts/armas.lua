@@ -186,3 +186,29 @@ function Armas:rolarAtaque(sheet)
         self.efetuarRolagem(sheet, dificuldade, bonus, critico);
     end;
 end;
+
+function Armas.export(sheet)
+    local txt = Text:new();
+    txt:appendLine('----- Armas -----\n');
+
+    if sheet.listaArmas ~= nil then
+        for k,_ in pairs(sheet.listaArmas) do
+            local arma = sheet.listaArmas[k];
+            if arma ~= nil 
+                and Util.isTable(arma)
+                and arma.descricaoArma ~= nil then
+                    txt:appendLine(arma.descricaoArma);
+                    txt:append(' ('..Util.handleNil(arma.tipoArma)..')');
+                    txt:appendLine('Dano: ');
+                    txt:append(arma.danoArma);
+                    txt:appendLine('Perícia: ');
+                    txt:append(arma.periciaArma);
+                    txt:breakLine();
+            end;
+        end;
+    end;
+
+    return txt:toString();
+end
+
+return Armas;

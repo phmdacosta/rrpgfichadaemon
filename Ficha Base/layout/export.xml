@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flowLayout  name="containerExport" class="LayoutInterno" align="top" autoHeight="true" orientation="horizontal">
+
+    <label align="left" text="Exportação das informações da ficha para texto." width="600"/>
+    <flowLineBreak/>
+
+    <button align="left" height="25" text="Exportar" width="80" margins="{top=10}" onClick="Export:exportToTXT(sheet);"/>
+    <flowLineBreak/>
+
+    <textEditor name="exportEditTxt" align="client" field="exportTxt"
+                fontColor="black" width="850" height="580" margins="{top=10}"/>
+
+    <script>
+		require('scripts/export.lua');
+	</script>
+</flowLayout> 

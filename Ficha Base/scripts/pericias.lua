@@ -116,3 +116,26 @@ end;
 function Pericias.getListaPericias(sheet)
     return sheet.listaPericias;
 end;
+
+function Pericias.export(sheet)
+    local txt = Text:new();
+    txt:appendLine('----- Perícias -----\n');
+
+    if sheet.listaPericias ~= nil then
+        for k,_ in pairs(sheet.listaPericias) do
+            local pericia = sheet.listaPericias[k];
+            if pericia ~= nil 
+                and Util.isTable(pericia)
+                and pericia.nomePericia ~= nil then
+                    txt:appendLine(pericia.nomePericia);
+                    txt:append(' ('..Util.handleNil(pericia.atribBasePericia)..')   ');
+                    txt:append(Util.handleNil(pericia.valorPericia)..'/');
+                    txt:append(Util.handleNil(pericia.totalPericia));
+            end;
+        end;
+    end;
+
+    return txt:toString();
+end;
+
+return Pericias;

@@ -39,7 +39,9 @@
 	
 	<!-- Constituição -->
 	<layout class="LayoutCampo Atributo">
-		<label align="left" text="CON: "/>
+		<label align="left" field="labelAtribCON"/>
+		<dataLink field="labelAtribCON" defaultValue="CON: "/>
+
 		<edit field="atribCON" type="number" keyboardType="numberPad"/>
 		<edit field="modAtribCON" type="number" keyboardType="numberPad"/>
 		<label class="LabelNumber" field="percentAtribCON"/>
@@ -54,7 +56,9 @@
 
 	<!-- Força -->
 	<layout class="LayoutCampo Atributo">
-		<label align="left" text="FOR: "/>
+		<label align="left" field="labelAtribFOR"/>
+		<dataLink field="labelAtribFOR" defaultValue="FOR: "/>
+
 		<edit field="atribFOR" type="number" keyboardType="numberPad"/>
 		<edit field="modAtribFOR" type="number" keyboardType="numberPad"/>
 		<label class="LabelNumber" field="percentAtribFOR"/>
@@ -69,7 +73,9 @@
 	
 	<!-- Destreza -->
 	<layout class="LayoutCampo Atributo">
-		<label align="left" text="DEX: "/>
+		<label align="left" field="labelAtribDEX"/>
+		<dataLink field="labelAtribDEX" defaultValue="DEX: "/>
+
 		<edit field="atribDEX" type="number" keyboardType="numberPad"/>
 		<edit field="modAtribDEX" type="number" keyboardType="numberPad"/>
 		<label class="LabelNumber" field="percentAtribDEX"/>
@@ -84,7 +90,9 @@
 	
 	<!-- Agilidade -->
 	<layout class="LayoutCampo Atributo">
-		<label align="left" text="AGI: "/>
+		<label align="left" field="labelAtribAGI"/>
+		<dataLink field="labelAtribAGI" defaultValue="AGI: "/>
+
 		<edit field="atribAGI" type="number" keyboardType="numberPad"/>
 		<edit field="modAtribAGI" type="number" keyboardType="numberPad"/>
 		<label class="LabelNumber" field="percentAtribAGI"/>
@@ -99,7 +107,9 @@
 	
 	<!-- Inteligência -->
 	<layout class="LayoutCampo Atributo">
-		<label align="left" text="INT: "/>
+		<label align="left" field="labelAtribINT"/>
+		<dataLink field="labelAtribINT" defaultValue="INT: "/>
+
 		<edit field="atribINT" type="number" keyboardType="numberPad"/>
 		<edit field="modAtribINT" type="number" keyboardType="numberPad"/>
 		<label class="LabelNumber" field="percentAtribINT"/>
@@ -114,7 +124,9 @@
 	
 	<!-- Força de Vontade -->
 	<layout class="LayoutCampo Atributo">
-		<label align="left" text="WILL: "/>
+		<label align="left" field="labelAtribWILL"/>
+		<dataLink field="labelAtribWILL" defaultValue="WILL: "/>
+
 		<edit field="atribWILL" type="number" keyboardType="numberPad"/>
 		<edit field="modAtribWILL" type="number" keyboardType="numberPad"/>
 		<label class="LabelNumber" field="percentAtribWILL"/>
@@ -129,7 +141,9 @@
 	
 	<!-- Percepição -->
 	<layout class="LayoutCampo Atributo">
-		<label align="left" text="PER: "/>
+		<label align="left" field="labelAtribPER"/>
+		<dataLink field="labelAtribPER" defaultValue="PER: "/>
+
 		<edit field="atribPER" type="number" keyboardType="numberPad"/>
 		<edit field="modAtribPER" type="number" keyboardType="numberPad"/>
 		<label class="LabelNumber" field="percentAtribPER"/>
@@ -144,7 +158,9 @@
 	
 	<!-- Carisma -->
 	<layout class="LayoutCampo Atributo">
-		<label align="left" text="CAR: "/>
+		<label align="left" field="labelAtribCAR"/>
+		<dataLink field="labelAtribCAR" defaultValue="CAR: "/>
+
 		<edit field="atribCAR" type="number" keyboardType="numberPad"/>
 		<edit field="modAtribCAR" type="number" keyboardType="numberPad"/>
 		<label class="LabelNumber" field="percentAtribCAR"/>

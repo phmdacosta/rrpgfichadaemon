@@ -87,3 +87,46 @@ function Base.atualizarPH(sheet, id, ph)
 
     return updatedSheet;
 end;
+
+function Base.export(sheet)
+    local txt = Text:new();
+
+    local personagem = Firecast.getPersonagemDe(sheet);
+    txt:appendLine('Nome: ');
+    txt:append(personagem.nome)
+
+    txt:appendLine('Level: ');
+    txt:append(sheet.level);
+    txt:append('    EXP: ');
+    txt:append(sheet.exp);
+
+    txt:appendLine('Idade: ');
+    txt:append(sheet.idade);
+    txt:appendLine('Sexo: ');
+    txt:append(sheet.sexo);
+    txt:appendLine('Altura: ');
+    txt:append(sheet.altura);
+    txt:appendLine('Peso: ');
+    txt:append(sheet.peso);
+
+    txt:breakLine();
+    txt:appendLine('PV: ');
+    txt:append(sheet.pv);
+    txt:appendLine('PM: ');
+    txt:append(sheet.pm);
+    txt:appendLine('IP: ');
+    txt:append(sheet.ip);
+    txt:appendLine('PH: ');
+    txt:append(sheet.ph);
+
+    txt:breakLine();
+
+    txt:appendLine('----- Armadura -----\n');
+    txt:appendLine(sheet.descricaoArmadura);
+    txt:append('    IP: ');
+    txt:append(sheet.ipArmadura);
+
+    return txt:toString();
+end;
+
+return Base;

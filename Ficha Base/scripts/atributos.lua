@@ -114,3 +114,29 @@ function Atributos.efetuarTeste(sheet, atributo)
         end
     );
 end;
+
+function Atributos.export(sheet)
+    local txt = Text:new();
+    txt:appendLine('----- Atributos -----\n');
+
+    local campoLabel = 'labelAtrib'
+    local campoValor = 'atrib'
+    local campoMod = 'modAtrib'
+    local campoPerc = 'percentAtrib'
+
+    local atributos = {'CON','FOR','DEX','AGI','INT','WILL','PER','CAR'};
+
+    for _,v in ipairs(atributos) do
+        txt:appendLine(sheet[campoLabel..v]);
+        txt:append('    ');
+        txt:append(sheet[campoValor..v]);
+        txt:append(' / ');
+        txt:append(sheet[campoMod..v]);
+        txt:append(' / ');
+        txt:append(sheet[campoPerc..v]);
+    end;
+
+    return txt:toString();
+end;
+
+return Atributos;
