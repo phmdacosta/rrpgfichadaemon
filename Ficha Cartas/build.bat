@@ -52,7 +52,6 @@ rdk i
 echo Finalizando compilacao.
 ::Remove base files
 for /F "tokens=*" %%A in (%list_base_files%) do (
-    set "replaceWith=."
     set "str=%%A"
     SETLOCAL ENABLEDELAYEDEXPANSION
     call set "str=%%str:\%to_path_1%=%%"
