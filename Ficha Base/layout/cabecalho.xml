@@ -3,7 +3,8 @@
 <!--<flowLayout  name="containerCabecalho" align="top" left="20" top="20" autoHeight="true" width="200" orientation="vertical" margins="{left=20, top=20}"> -->
 
 	<event name="onAfterLayoutCalc">
-		Cabecalho:setSheet(sheet);
+		--Cabecalho:setSheet(sheet);
+		Cabecalho:init(sheet)
 	</event>
 
 	<layout class="LayoutCampo" name="containerLevelExp">
@@ -11,7 +12,11 @@
 		<layout align="left">
 			<label text="LV:"/>
 			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="level"/>
-			<dataLink field="level" defaultValue="1"/>
+			<dataLink field="level" defaultValue="1">
+				<event name="onChange">
+					Base.aplicarLvl(sheet);
+				</event>
+			</dataLink>
 		</layout>
 
 		<!-- Experiência -->
@@ -34,19 +39,27 @@
 		<!-- Sexo -->
 		<layout class="ProxHorizon" align="left">
 			<label text="Sexo:"/>
-			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="sexo"/>
+			<edit horzTextAlign="center" field="sexo"/>
 		</layout>
+	</layout>
+	<flowLineBreak lineSpacing="10"/>
 
+	<!-- Informações personagem 2 -->
+	<layout class="LayoutCampo" name="containerInfoPers2" width="900">
 		<!-- Altura -->
-		<layout class="ProxHorizon" align="left">
+		<layout align="left">
 			<label text="Altura:"/>
 			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="altura"/>
+			<label field="medidaAltura" margins="left=5"/>
+			<dataLink field="medidaAltura" defaultValue="m"/>
 		</layout>
 
 		<!-- Peso -->
 		<layout class="ProxHorizon" align="left">
 			<label text="Peso:"/>
 			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="peso"/>
+			<label field="medidaPeso" margins="left=5"/>
+			<dataLink field="medidaPeso" defaultValue="kg"/>
 		</layout>
 	</layout>
 	<flowLineBreak lineSpacing="20"/>
@@ -57,12 +70,26 @@
 		<layout align="left">
 			<label text="PV:"/>
 			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="pv"/>
+			<dataLink field="pv" defaultValue="0">
+				<event name="onChange">
+					Base.corrigirValor(sheet, 'pv');
+				</event>
+			</dataLink>
+			<label class="LabelNumber" field="pvMax"/>
+			<dataLink field="pvMax" defaultValue="/ 0"/>
 		</layout>
 
 		<!-- PM -->
 		<layout class="ProxHorizon" align="left">
 			<label text="PM:"/>
 			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="pm"/>
+			<dataLink field="pm" defaultValue="0">
+				<event name="onChange">
+					Base.corrigirValor(sheet, 'pm');
+				</event>
+			</dataLink>
+			<label class="LabelNumber" field="pmMax"/>
+			<dataLink field="pmMax" defaultValue="/ 0"/>
 		</layout>
 	</layout>
 	<flowLineBreak lineSpacing="10"/>
@@ -78,6 +105,13 @@
 		<layout class="ProxHorizon" align="left">
 			<label text="PH:"/>
 			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="ph"/>
+			<dataLink field="ph" defaultValue="0">
+				<event name="onChange">
+					Base.corrigirValor(sheet, 'ph');
+				</event>
+			</dataLink>
+			<label class="LabelNumber" field="phMax"/>
+			<dataLink field="phMax" defaultValue="/ 0"/>
 		</layout>
 	</layout>
 	

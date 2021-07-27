@@ -36,6 +36,7 @@
 		<!-- Campos não visíveis para guarda informação -->
 		<edit visible="false" enabled="false" field="idAprim"/> <!-- ID do Aprimoramento -->
 		<edit visible="false" enabled="false" field="descricaoAprim"/> <!-- Descrição do Aprimoramento -->
+		<edit visible="false" enabled="false" field="camposAprim"/> <!-- Campos afetados pelo Aprimoramento -->
 		
 		<!-- Campos visíveis -->
 		<!-- Nome do Aprimoramento -->
@@ -52,7 +53,7 @@
 		<!-- Pontos de custo do Aprimoramento -->
 		<flowLayout class="Pontos Margin" align="left" autoHeight="true" maxControlsPerLine="1">
 			<label class="Pontos Hint" text="Pontos"/>
-			<edit class="Pontos" field="pontosAprim" horzTextAlign="center"/>
+			<edit class="Pontos" type="number" keyboardType="numberPad" field="pontosAprim" horzTextAlign="center"/>
 			<dataLink field="pontosAprim">
 				<event name="onUserChange">
 					Aprim:atualizarComPontos(sheet);

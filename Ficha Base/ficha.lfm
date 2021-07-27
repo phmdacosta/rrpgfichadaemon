@@ -41,7 +41,7 @@
 
 			.LayoutCampo layout {
 				height: 25;
-				width: 120;
+				width: 175;
 			}
 
 			.LayoutCampo label {

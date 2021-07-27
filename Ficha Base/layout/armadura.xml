@@ -17,7 +17,7 @@
 
     <dataLink field="ipArmadura" defaultValue="0">
         <event name="onUserChange">
-            Base.atualizarIP(sheet, 1, sheet.ipArmadura);
+            Base.atualizarIP(sheet, 'armadura', sheet.ipArmadura);
         </event>
     </dataLink>
 

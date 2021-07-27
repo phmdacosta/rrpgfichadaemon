@@ -1,14 +1,60 @@
-require('base.lua');
+local base = require('base.lua');
+local constants = require('constants.lua');
+
+local atributos = constants.atributos;
+
+local arrayAtrib = {
+    atributos.CON,
+    atributos.FOR,
+    atributos.DEX,
+    atributos.AGI,
+    atributos.INT,
+    atributos.WILL,
+    atributos.PER,
+    atributos.CAR
+};
 
 Atributos = {
     sheet = nil,
-    array = {'CON', 'FOR', 'DEX', 'AGI', 'INT', 'WILL', 'PER', 'CAR'},
-    default = 'CON',
+    CON = atributos.CON,
+    FOR = atributos.FOR,
+    DEX = atributos.DEX,
+    AGI = atributos.AGI,
+    INT = atributos.INT,
+    WILL = atributos.WILL,
+    PER = atributos.PER,
+    CAR = atributos.CAR,
+    array = arrayAtrib,
+    default = atributos.CON,
     prefixCampoAtrib = 'atrib',
     prefixCampoMod = 'modAtrib',
     prefixCampoPercent = 'percentAtrib',
     prefixCampoBonus = 'bonus'
 };
+
+function Atributos:getNomeCampoAtrib(atributo)
+    if atributo ~= nil then
+        return self.prefixCampoAtrib .. atributo;
+    end
+end
+
+function Atributos:getNomeCampoMod(atributo)
+    if atributo ~= nil then
+        return self.prefixCampoMod .. atributo;
+    end
+end
+
+function Atributos:getNomeCampoPercent(atributo)
+    if atributo ~= nil then
+        return self.prefixCampoPercent .. atributo;
+    end
+end
+
+function Atributos:getNomeCampoBonus(atributo)
+    if atributo ~= nil then
+        return self.prefixCampoBonus .. atributo;
+    end
+end
 
 function Atributos:setSheet(sheet)
     self.sheet = sheet;
@@ -37,51 +83,53 @@ end;
 
 function Atributos:onChange(sheet, atributo)
     if sheet ~= nil then
-        local nomeCampoAtrib = 'atrib' .. atributo;
-        local nomeCampoMod = 'modAtrib' .. atributo;
-        local nomeCampoPercent = 'percentAtrib' .. atributo;
-        local nomeCampoBonus = 'bonus' .. atributo;
+        local nomeCampoAtrib = Atributos:getNomeCampoAtrib(atributo);
+        local nomeCampoMod = Atributos:getNomeCampoMod(atributo);
+        local nomeCampoPercent = Atributos:getNomeCampoPercent(atributo);
+        local nomeCampoBonus = Atributos:getNomeCampoBonus(atributo);
 
         sheet[nomeCampoPercent] = Atributos.getPercentualAtributo(sheet[nomeCampoAtrib], sheet[nomeCampoMod]);
 		sheet[nomeCampoBonus] = Atributos.getBonusAtributo(sheet[nomeCampoAtrib], sheet[nomeCampoMod]);
 
-        if atributo == 'FOR' or atributo == 'CON' then
-		    sheet = Atributos.calcularPV(sheet, sheet.level, sheet.percentAtribCON, 
-                                                sheet.percentAtribFOR, sheet.bonusCON);
-        elseif atributo == 'WILL' then
-            sheet = Atributos.calcularPM(sheet, sheet.level, sheet[nomeCampoBonus]);
+        if atributo == atributos.FOR or atributo == atributos.CON then
+		    sheet = base.calcularPV(sheet);
+        elseif atributo == atributos.WILL then
+            sheet = base.calcularPM(sheet);
         end;
 
         Atributos:setSheet(sheet);
     end;
 end;
 
-function Atributos.calcularPV(sheet, level, percentFOR, percentCON, bonusCON)
+--[[
+function Atributos.calcularPV(sheet, level)
     local updatedSheet = sheet;
 
-    if percentCON ~= nil then
-        local valAtribFor = (tonumber(percentFOR) or 0) / 4;
-        local valAtribCon = (tonumber(percentCON) or 0) / 4;
+    if sheet ~= nil and level ~= nil then
+        -- Obetemos o valor do atributo com base no percentual para recuperar o total atributo + mod
+        local valAtribFor = (tonumber(sheet[Atributos:getNomeCampoPercent(atributos.FOR)]) or 0) / 4;
+        local valAtribCon = (tonumber(sheet[Atributos:getNomeCampoPercent(atributos.CON)]) or 0) / 4;
         local resultadoPV = ((valAtribFor + valAtribCon) / 2) 
-            + (tonumber(level) or 0) + (tonumber(bonusCON) or 0);
-        
-        updatedSheet = Base.atualizarPV(sheet, 1, math.floor(resultadoPV));
-    end
+            + ((tonumber(sheet[Atributos:getNomeCampoBonus(atributos.CON)]) or 0) * (tonumber(level) or 0));
+
+        updatedSheet = Base.atualizarPV(sheet, 'atrib', math.floor(resultadoPV));
+    end;
 
     return updatedSheet;
 end;
 
-function Atributos.calcularPM(sheet, level, bonusWill)
+function Atributos.calcularPM(sheet, level)
     local updatedSheet = sheet;
 
     local numLevel = tonumber(level);
     if numLevel == 1 then
-        local pm = tonumber(bonusWill) + 1;
-        updatedSheet = Base.atualizarPM(sheet, 1, pm);
+        local pm = (tonumber(sheet[Atributos:getNomeCampoBonus(atributos.WILL)]) or 0) + 1;
+        updatedSheet = Base.atualizarPM(sheet, 'atrib', pm);
     end
 
     return updatedSheet;
 end;
+]]
 
 function Atributos.efetuarTeste(sheet, atributo)
     local nomeAtrib = atributo;
@@ -105,7 +153,7 @@ function Atributos.efetuarTeste(sheet, atributo)
                     mesa.chat:enviarMensagem("Passou: " .. resultado);
                 end;
             else
-                if resultado >= Base.erroCritico then
+                if resultado >= base.erroCritico then
                     mesa.chat:enviarMensagem("Erro crítico! " .. resultado);
                 else
                     mesa.chat:enviarMensagem("Errou: " .. resultado);
@@ -124,9 +172,9 @@ function Atributos.export(sheet)
     local campoMod = 'modAtrib'
     local campoPerc = 'percentAtrib'
 
-    local atributos = {'CON','FOR','DEX','AGI','INT','WILL','PER','CAR'};
+    --local atributos = {'CON','FOR','DEX','AGI','INT','WILL','PER','CAR'};
 
-    for _,v in ipairs(atributos) do
+    for _,v in ipairs(arrayAtrib) do
         txt:appendLine(sheet[campoLabel..v]);
         txt:append('    ');
         txt:append(sheet[campoValor..v]);

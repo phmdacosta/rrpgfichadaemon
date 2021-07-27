@@ -196,6 +196,16 @@ function Aprim:atualizarComPontos(sheetItem)
                                 end
                             end;
                         end;
+
+                        -- Alguns aprimoramentos podem influenciar em campos na ficha
+                        local max = 10
+                        for i = 1, max do
+                            local col = 'campo'..i
+                            if a[col] ~= nil and a[col] ~= '' then
+                                Aprim:atualizarCampo(a.pontos, a[col]);
+                            end;
+                        end;
+                        
                 end;
             end;
 
@@ -224,6 +234,20 @@ function Aprim:getAllParents(dbContent, childId, refFieldName)
 
     return parents;
 end;
+
+function Aprim:atualizarCampo(pontos, campo)
+    local sheet = Aprim:getSheet()
+
+    local base = require('scripts/base.lua');
+    local funcUpper = 'atualizar'..string.upper(campo);
+    local funcCapt = 'atualizar'..Util.capitalize(campo);
+
+    if base[funcCapt] ~= nil then
+        base[funcCapt](sheet, 'aprim', tonumber(pontos))
+    elseif base[funcUpper] then
+        base[funcUpper](sheet, 'aprim', tonumber(pontos))
+    end;
+ end;
 
 function Aprim.export(sheet)
     local txt = Text:new();
