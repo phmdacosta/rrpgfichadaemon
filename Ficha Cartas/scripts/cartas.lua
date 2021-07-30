@@ -1,7 +1,7 @@
 require('sql.lua')
 require('util.lua')
 
-local CARTAS_DATA_PATH = "database/cartas.csv"
+local CARTAS_DATA_PATH = "cartas.csv"
 local PREFIX_NOME_ITEM = "carta";
 
 Cartas = {

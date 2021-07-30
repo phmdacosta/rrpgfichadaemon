@@ -2,6 +2,8 @@ local base = require('base.lua');
 local constants = require('constants.lua');
 
 local atributos = constants.atributos;
+local nomeCampos = constants.nomeCampos.atributos;
+local PONTOS_INICIAIS = 100;
 
 local arrayAtrib = {
     atributos.CON,
@@ -26,33 +28,34 @@ Atributos = {
     CAR = atributos.CAR,
     array = arrayAtrib,
     default = atributos.CON,
-    prefixCampoAtrib = 'atrib',
-    prefixCampoMod = 'modAtrib',
-    prefixCampoPercent = 'percentAtrib',
-    prefixCampoBonus = 'bonus'
+    nomeCampos = nomeCampos
 };
+
+function Atributos:init(sheet)
+    Atributos:setSheet(sheet);
+end
 
 function Atributos:getNomeCampoAtrib(atributo)
     if atributo ~= nil then
-        return self.prefixCampoAtrib .. atributo;
+        return nomeCampos.prefixAtrib .. atributo;
     end
 end
 
 function Atributos:getNomeCampoMod(atributo)
     if atributo ~= nil then
-        return self.prefixCampoMod .. atributo;
+        return nomeCampos.prefixMod .. atributo;
     end
 end
 
 function Atributos:getNomeCampoPercent(atributo)
     if atributo ~= nil then
-        return self.prefixCampoPercent .. atributo;
+        return nomeCampos.prefixPercent .. atributo;
     end
 end
 
 function Atributos:getNomeCampoBonus(atributo)
     if atributo ~= nil then
-        return self.prefixCampoBonus .. atributo;
+        return nomeCampos.prefixBonus .. atributo;
     end
 end
 
@@ -81,55 +84,93 @@ function Atributos.getBonusAtributo(valorBase, modificador)
     return 0;
 end;
 
-function Atributos:onChange(sheet, atributo)
-    if sheet ~= nil then
-        local nomeCampoAtrib = Atributos:getNomeCampoAtrib(atributo);
-        local nomeCampoMod = Atributos:getNomeCampoMod(atributo);
-        local nomeCampoPercent = Atributos:getNomeCampoPercent(atributo);
-        local nomeCampoBonus = Atributos:getNomeCampoBonus(atributo);
-
-        sheet[nomeCampoPercent] = Atributos.getPercentualAtributo(sheet[nomeCampoAtrib], sheet[nomeCampoMod]);
-		sheet[nomeCampoBonus] = Atributos.getBonusAtributo(sheet[nomeCampoAtrib], sheet[nomeCampoMod]);
-
-        if atributo == atributos.FOR or atributo == atributos.CON then
-		    sheet = base.calcularPV(sheet);
-        elseif atributo == atributos.WILL then
-            sheet = base.calcularPM(sheet);
+function Atributos.onChangePontosAtribMax(sheet, form, oldValue, newValue)
+    if newValue <= 0 or newValue == nil then
+        -- iniciando pontos max de atributos
+        sheet.pontosAtribMax = PONTOS_INICIAIS;
+        if sheet.level ~= nil then
+            sheet.pontosAtribMax = sheet.pontosAtribMax + (sheet.level);
         end;
-
-        Atributos:setSheet(sheet);
-    end;
-end;
-
---[[
-function Atributos.calcularPV(sheet, level)
-    local updatedSheet = sheet;
-
-    if sheet ~= nil and level ~= nil then
-        -- Obetemos o valor do atributo com base no percentual para recuperar o total atributo + mod
-        local valAtribFor = (tonumber(sheet[Atributos:getNomeCampoPercent(atributos.FOR)]) or 0) / 4;
-        local valAtribCon = (tonumber(sheet[Atributos:getNomeCampoPercent(atributos.CON)]) or 0) / 4;
-        local resultadoPV = ((valAtribFor + valAtribCon) / 2) 
-            + ((tonumber(sheet[Atributos:getNomeCampoBonus(atributos.CON)]) or 0) * (tonumber(level) or 0));
-
-        updatedSheet = Base.atualizarPV(sheet, 'atrib', math.floor(resultadoPV));
     end;
 
-    return updatedSheet;
-end;
+    -- calculando sobra
+    if sheet.totalGastoAtrib < 0 then
+        sheet.pontosAtribSobra = sheet.pontosAtribMax;
+    elseif sheet.totalGastoAtrib < sheet.pontosAtribMax then
+        sheet.pontosAtribSobra = Util.toNumber(sheet.pontosAtribMax) - Util.toNumber(sheet.totalGastoAtrib);
+    end;
 
-function Atributos.calcularPM(sheet, level)
-    local updatedSheet = sheet;
+    Atributos:alternarVisibilidadePontosSobra(sheet, form);
+end
 
-    local numLevel = tonumber(level);
-    if numLevel == 1 then
-        local pm = (tonumber(sheet[Atributos:getNomeCampoBonus(atributos.WILL)]) or 0) + 1;
-        updatedSheet = Base.atualizarPM(sheet, 'atrib', pm);
+function Atributos:onChange(sheet, atributo, form, field, oldValue, newValue)
+    if sheet == nil or oldValue == nil or oldValue == newValue then
+        return;
+    end;
+
+    if newValue == nil then
+        if sheet[field] ~= nil then
+            sheet[field] = 0;
+        end;
+        return;
+    end;
+
+    local sql = require('scripts/sql.lua');
+    local fileName = 'array_atributos.csv';
+    local atribArrDbContent = sql.readFile(fileName);
+    local atribArr = nil;
+    if atribArrDbContent ~= nil then
+        atribArr = atribArrDbContent:getObjects()[1]; -- só deveremos ter um objeto
+    end;
+
+    if atribArr == nil then
+        atribArr = {}
+    end;
+
+    -- caso o novo valor seje o mesmo do salvo em base não faz nada
+    if atribArr[atributo] ~= nil 
+        and Util.toNumber(atribArr[atributo]) == Util.toNumber(newValue) then
+            return;
     end
 
-    return updatedSheet;
+    local difValAtrib = Util.toNumber(newValue) - Util.toNumber(oldValue);
+    local totalGasto = sheet.totalGastoAtrib;
+    totalGasto = Util.toNumber(totalGasto) + Util.toNumber(difValAtrib);
+
+    if Util.toNumber(totalGasto) > Util.toNumber(sheet.pontosAtribMax) then
+        showMessage('Não é possível distribuir mais de '..sheet.pontosAtribMax..' pontos');
+        sheet[field] = oldValue;
+        return;
+    end;
+
+    -- atualizando total gasto e sobra
+    sheet.totalGastoAtrib = totalGasto;
+    sheet.pontosAtribSobra = Util.toNumber(sheet.pontosAtribMax) - Util.toNumber(sheet.totalGastoAtrib);
+
+    local nomeCampoAtrib = Atributos:getNomeCampoAtrib(atributo);
+    local nomeCampoMod = Atributos:getNomeCampoMod(atributo);
+    local nomeCampoPercent = Atributos:getNomeCampoPercent(atributo);
+    local nomeCampoBonus = Atributos:getNomeCampoBonus(atributo);
+
+    -- atualizando outros campos de atributos
+    sheet[nomeCampoPercent] = Atributos.getPercentualAtributo(sheet[nomeCampoAtrib], sheet[nomeCampoMod]);
+    sheet[nomeCampoBonus] = Atributos.getBonusAtributo(sheet[nomeCampoAtrib], sheet[nomeCampoMod]);
+
+    -- efetuando calculos impactados pelos atributos
+    if atributo == atributos.FOR or atributo == atributos.CON then
+        sheet = base.calcularPV(sheet);
+    elseif atributo == atributos.WILL then
+        sheet = base.calcularPM(sheet);
+    end;
+
+    Atributos:alternarVisibilidadePontosSobra(sheet, form);
+
+    -- salvar o novo valor do atributo em base de dados
+    atribArr[atributo] = newValue;
+    sql.save(fileName, atribArr);
+
+    Atributos:setSheet(sheet);
 end;
-]]
 
 function Atributos.efetuarTeste(sheet, atributo)
     local nomeAtrib = atributo;
@@ -163,25 +204,29 @@ function Atributos.efetuarTeste(sheet, atributo)
     );
 end;
 
+function Atributos:alternarVisibilidadePontosSobra(sheet, form)
+    if form.pontoAtribSobraText ~= nil then
+        if Util.toNumber(sheet.pontosAtribSobra) > 0 then
+            sheet.pontoAtribSobraText = Mensagens:criarMensagemPontosSobrando(sheet.pontosAtribSobra);
+            form.pontoAtribSobraText.visible = true;
+        else
+            form.pontoAtribSobraText.visible = false;
+        end;
+    end;
+end
+
 function Atributos.export(sheet)
     local txt = Text:new();
     txt:appendLine('----- Atributos -----\n');
 
-    local campoLabel = 'labelAtrib'
-    local campoValor = 'atrib'
-    local campoMod = 'modAtrib'
-    local campoPerc = 'percentAtrib'
-
-    --local atributos = {'CON','FOR','DEX','AGI','INT','WILL','PER','CAR'};
-
     for _,v in ipairs(arrayAtrib) do
-        txt:appendLine(sheet[campoLabel..v]);
+        txt:appendLine(sheet[nomeCampos.prefixLabel..v]);
         txt:append('    ');
-        txt:append(sheet[campoValor..v]);
+        txt:append(sheet[Atributos:getNomeCampoAtrib(v)]);
         txt:append(' / ');
-        txt:append(sheet[campoMod..v]);
+        txt:append(sheet[Atributos:getNomeCampoMod(v)]);
         txt:append(' / ');
-        txt:append(sheet[campoPerc..v]);
+        txt:append(sheet[Atributos:getNomeCampoPercent(v)]);
     end;
 
     return txt:toString();

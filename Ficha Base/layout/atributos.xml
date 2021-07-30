@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- Atributos -->
-<flowLayout name="containerAtributos" class="LayoutInterno"  align="top" autoHeight="true" width="260" orientation="horizontal">
+<flowLayout name="containerAtributos" class="LayoutInterno"  align="top" autoHeight="true" orientation="horizontal">
 
 	<event name="onAfterLayoutCalc">
-		Atributos:setSheet(sheet);
+		Atributos:init(sheet);
 	</event>
 	
 	<style>
@@ -27,7 +27,18 @@
 		}
 	</style>
 
+	<label field="pontosAtribMax" visible="false"/>
+	<dataLink field="totalGastoAtrib">
+		<event name="onChange">
+			Atributos.onChangePontosAtribMax(sheet, self, oldValue, newValue);
+		</event>
+	</dataLink>
+	<label field="totalGastoAtrib" visible="false"/>
+	<dataLink field="totalGastoAtrib" defaultValue="0"/>
+	<label field="pontosAtribSobra" visible="false"/>
+
 	<label class="Titulo" align="left" text="Atributos"/>
+	<label class="SubTitulo" name="pontoAtribSobraText" align="left" field="pontoAtribSobraText" width="200"/>
 	<flowLineBreak/>
 	
 	<layout class="LayoutCampo Atributo">
@@ -49,7 +60,7 @@
 		<button text="Rolar" onClick="Atributos.efetuarTeste(sheet, 'CON')"/>
 		<dataLink fields="{'atribCON', 'modAtribCON'}" defaultValues="{'0','0'}">
 			<event name="onChange">
-				Atributos:onChange(sheet, 'CON');
+				Atributos:onChange(sheet, 'CON', self, field, oldValue, newValue);
 			</event>
 		</dataLink>
 	</layout>
@@ -66,7 +77,7 @@
 		<button text="Rolar" onClick="Atributos.efetuarTeste(sheet, 'FOR')"/>
 		<dataLink fields="{'atribFOR', 'modAtribFOR'}" defaultValues="{'0','0'}">
 			<event name="onChange">
-				Atributos:onChange(sheet, 'FOR');
+				Atributos:onChange(sheet, 'FOR', self, field, oldValue, newValue);
 			</event>
 		</dataLink>	
 	</layout>
@@ -83,7 +94,7 @@
 		<button text="Rolar" onClick="Atributos.efetuarTeste(sheet, 'DEX')"/>
 		<dataLink fields="{'atribDEX', 'modAtribDEX'}" defaultValues="{'0','0'}">
 			<event name="onChange">
-				Atributos:onChange(sheet, 'DEX');
+				Atributos:onChange(sheet, 'DEX', self, field, oldValue, newValue);
 			</event>
 		</dataLink>
 	</layout>
@@ -100,7 +111,7 @@
 		<button text="Rolar" onClick="Atributos.efetuarTeste(sheet, 'AGI')"/>
 		<dataLink fields="{'atribAGI', 'modAtribAGI'}" defaultValues="{'0','0'}">
 			<event name="onChange">
-				Atributos:onChange(sheet, 'AGI');
+				Atributos:onChange(sheet, 'AGI', self, field, oldValue, newValue);
 			</event>
 		</dataLink>
 	</layout>
@@ -117,7 +128,7 @@
 		<button text="Rolar" onClick="Atributos.efetuarTeste(sheet, 'INT')"/>
 		<dataLink fields="{'atribINT', 'modAtribINT'}" defaultValues="{'0','0'}">
 			<event name="onChange">
-				Atributos:onChange(sheet, 'INT');
+				Atributos:onChange(sheet, 'INT', self, field, oldValue, newValue);
 			</event>
 		</dataLink>
 	</layout>
@@ -134,7 +145,7 @@
 		<button text="Rolar" onClick="Atributos.efetuarTeste(sheet, 'WILL')"/>
 		<dataLink fields="{'atribWILL', 'modAtribWILL'}" defaultValues="{'0','0'}">
 			<event name="onChange">
-				Atributos:onChange(sheet, 'WILL');
+				Atributos:onChange(sheet, 'WILL', self, field, oldValue, newValue);
 			</event>
 		</dataLink>
 	</layout>
@@ -151,7 +162,7 @@
 		<button text="Rolar" onClick="Atributos.efetuarTeste(sheet, 'PER')"/>
 		<dataLink fields="{'atribPER', 'modAtribPER'}" defaultValues="{'0','0'}">
 			<event name="onChange">
-				Atributos:onChange(sheet, 'PER');
+				Atributos:onChange(sheet, 'PER', self, field, oldValue, newValue);
 			</event>
 		</dataLink>
 	</layout>
@@ -168,7 +179,7 @@
 		<button text="Rolar" onClick="Atributos.efetuarTeste(sheet, 'CAR')"/>
 		<dataLink fields="{'atribCAR', 'modAtribCAR'}" defaultValues="{'0','0'}">
 			<event name="onChange">
-				Atributos:onChange(sheet, 'CAR');
+				Atributos:onChange(sheet, 'CAR', self, field, oldValue, newValue);
 			</event>
 		</dataLink>
 	</layout>

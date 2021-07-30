@@ -4,7 +4,8 @@
 
 	<event name="onAfterLayoutCalc">
 		--Cabecalho:setSheet(sheet);
-		Cabecalho:init(sheet)
+		Cabecalho:init(sheet);
+		Base:carregarTabelaLvlExp();
 	</event>
 
 	<layout class="LayoutCampo" name="containerLevelExp">
@@ -14,7 +15,7 @@
 			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="level"/>
 			<dataLink field="level" defaultValue="1">
 				<event name="onChange">
-					Base.aplicarLvl(sheet);
+					Base.aplicarLvl(sheet, self, oldValue, newValue);
 				</event>
 			</dataLink>
 		</layout>
@@ -23,7 +24,11 @@
 		<layout class="ProxHorizon" align="left">
 			<label text="EXP:"/>
 			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="exp"/>
-			<dataLink field="exp" defaultValue="0"/>
+			<dataLink field="exp" defaultValue="0">
+				<event name="onChange">
+					Base:verificarExp(sheet, oldValue, newValue);
+				</event>
+			</dataLink>
 		</layout>
 	</layout>
 	<flowLineBreak lineSpacing="10"/>
@@ -51,7 +56,7 @@
 			<label text="Altura:"/>
 			<edit type="number" keyboardType="numberPad" horzTextAlign="center" field="altura"/>
 			<label field="medidaAltura" margins="left=5"/>
-			<dataLink field="medidaAltura" defaultValue="m"/>
+			<dataLink field="medidaAltura" defaultValue="cm"/>
 		</layout>
 
 		<!-- Peso -->

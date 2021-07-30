@@ -1,15 +1,23 @@
 Util = {};
 
 function Util.split(s, delimiter)
-    local result = {};
-    for match in (s..delimiter):gmatch("(.-)"..delimiter) do
-        table.insert(result, match);
-    end
+    local result = {s};
+    if s ~= nil 
+        and delimiter ~= nil 
+        and string.find(s, delimiter)then
+            result = {};
+            for match in (s..delimiter):gmatch("(.-)"..delimiter) do
+                table.insert(result, match);
+            end;
+    end;
     return result;
 end;
 
 function Util.trim(s)
-    return s:gsub("%s+", "")
+    if s == nil then
+        return s;
+    end;
+    return s:gsub("%s+", "");
 end;
 
 function Util.handleNil(s)
@@ -60,6 +68,22 @@ function Util.isEmptyTable(t)
 
 function Util.isTable(obj)
     return type(obj) == 'table';
+end
+
+--[[
+    Transforma string em número.
+    Caso não consiga transformar, retorna zero.
+]]
+function Util.toNumber(str)
+    return (tonumber(str) or 0)
+end
+
+function Util.strConcat(args)
+    local res = ''
+    for _,v in ipairs(args) do
+        res = res..Util.handleNil(v)
+    end
+    return res
 end
 
  return Util;

@@ -1,14 +1,19 @@
 local constants = require('constants.lua');
 
-local nomeCampos = constants.nomeCampos.cabecalho;
+local nomeCamposCabecalho = constants.nomeCampos.cabecalho;
+local nomeCampoLevel = nomeCamposCabecalho.level;
 
-Cabecalho = {sheet = nil};
+Cabecalho = {
+    sheet = nil,
+    nomeCampos = nomeCamposCabecalho,
+};
 
 Base = {
     dadoRolagem = '1d100',
     erroCritico = 95,
     cabecalho = Cabecalho,
-    nomeCampos = nomeCampos
+    nomeCampos = nomeCamposCabecalho,
+    dbContent = nil
 };
 
 function Cabecalho:init(sheet)
@@ -28,17 +33,72 @@ function Cabecalho:getSheet()
     return self.sheet;
 end;
 
-function Base.aplicarLvl(sheet)
+function Base:carregarTabelaLvlExp()
+
+    local content = SQL.readFile('level_exp.csv');
+    if content ~= nil then
+        content.name = 'db_level_exp';
+        self.dbContent = Util.copy(content);
+    end;
+end;
+
+function Base:getDBContent()
+    return self.dbContent;
+end
+
+--[[
+    Atualiza a ficha com base na alteração do nível do personagem.
+]]
+function Base.aplicarLvl(sheet, form, oldValue, newValue)
     -- atualizar PV
-    Base.atualizarPV(sheet, nomeCampos.level, sheet[nomeCampos.level]); -- adicionando level ao cálculo
+    Base.atualizarPV(sheet, nomeCampoLevel, sheet[nomeCampoLevel]); -- adicionando level ao cálculo
     Base.calcularPV(sheet);
 
     -- atualizar PM
-    Base.atualizarPM(sheet, nomeCampos.level, sheet[nomeCampos.level]); -- adicionando level ao cálculo
+    Base.atualizarPM(sheet, nomeCampoLevel, sheet[nomeCampoLevel]); -- adicionando level ao cálculo
     Base.calcularPM(sheet);
 
     -- atualizar pontos heróicos
-    Base.atualizarPH(sheet, nomeCampos.level, sheet[nomeCampos.level]);
+    Base.atualizarPH(sheet, nomeCampoLevel, sheet[nomeCampoLevel]);
+
+    -- Mais um ponto de atributo
+    if newValue ~= nil then
+        --mesa.chat:enviarMensagem('calcular pontos max atributo após altera nível')
+        local add = Util.toNumber(newValue) - Util.toNumber(oldValue);
+
+        sheet.pontosAtribMax = Util.toNumber(sheet.pontosAtribMax) + add;
+        sheet.pontosAtribSobra = Util.toNumber(sheet.pontosAtribMax) - Util.toNumber(sheet.totalGastoAtrib);
+
+        Atributos:alternarVisibilidadePontosSobra(sheet, form);
+    end;
+
+end;
+
+--[[
+    Atualiza o nível com base na experiência ganha.
+    Lê uma tabela de esperiência e verifica se o personagem alcançou a pontuação necessária para subir de nível.
+    Caso tenha, atualiza o nível de forma automática
+]]
+function Base:verificarExp(sheet, oldValue, newValue)
+    if sheet == nil or oldValue == nil or newValue == nil then
+        return;
+    end;
+
+    local dbContent = Base:getDBContent();
+    if dbContent == nil then
+        return;
+    end;
+
+    local objects = dbContent:getObjects();
+    
+    for i = 1, #objects do
+        local obj = objects[i];
+        if tonumber(oldValue) < tonumber(obj.exp) 
+            and tonumber(newValue) >= tonumber(obj.exp)
+            and sheet[nomeCampoLevel] ~= obj.level then
+                sheet[nomeCampoLevel] = obj.level;
+        end;
+    end;
 end;
 
 function Base.atualizarIP(sheet, key, ip)
@@ -62,7 +122,7 @@ end;
 
 function Base.corrigirValor(sheet, campo)
     local campoMax = campo..'Max'
-    if sheet[campo] > sheet[campoMax] then
+    if Util.toNumber(sheet[campo]) > Util.toNumber(sheet[campoMax]) then
         sheet[campo] = tonumber(sheet[campoMax])
     end;
 end;
@@ -70,7 +130,7 @@ end;
 function Base.calcularPV(sheet)
     local updatedSheet = sheet;
     local atributos = constants.atributos;
-    local level = sheet[nomeCampos.level];
+    local level = sheet[nomeCampoLevel];
 
     if sheet ~= nil and level ~= nil then
         -- Obetemos o valor do atributo com base no percentual para recuperar o total atributo + mod
@@ -88,13 +148,14 @@ end;
 function Base.calcularPM(sheet)
     local updatedSheet = sheet;
     local atributos = constants.atributos;
-    local level = sheet[nomeCampos.level]
+    local level = sheet[nomeCampoLevel]
 
-    local numLevel = tonumber(level);
-    if numLevel == 1 then
-        local pm = (tonumber(sheet[Atributos:getNomeCampoBonus(atributos.WILL)]) or 0) + 1;
-        updatedSheet = Base.atualizarPM(sheet, 'atrib', pm);
-    end
+    if sheet == nil and level == nil then
+        return updatedSheet;
+    end;
+
+    local pm = (tonumber(sheet[Atributos:getNomeCampoBonus(atributos.WILL)]) or 0);
+    updatedSheet = Base.atualizarPM(sheet, 'atrib', pm);
 
     return updatedSheet;
 end;
@@ -162,13 +223,13 @@ function Base.atualizarPH(sheet, key, ph)
     updatedSheet.phMax = 0;
 
     for k, v in pairs(updatedSheet.phExtra) do
-        if v ~= nil and k ~= nomeCampos.level then
+        if v ~= nil and k ~= nomeCampoLevel then
             updatedSheet.phMax = updatedSheet.phMax + v;
         end;
     end;
 
-    if updatedSheet.phExtra[nomeCampos.level] ~= nil then
-        updatedSheet.phMax = updatedSheet.phMax * updatedSheet.phExtra[nomeCampos.level];
+    if updatedSheet.phExtra[nomeCampoLevel] ~= nil then
+        updatedSheet.phMax = updatedSheet.phMax * updatedSheet.phExtra[nomeCampoLevel];
     end;
 
     if (updatedSheet.firstUpdatePH == nil 
@@ -189,7 +250,7 @@ function Base.export(sheet)
     txt:append(personagem.nome)
 
     txt:appendLine('Level: ');
-    txt:append(sheet[nomeCampos.level]);
+    txt:append(sheet[nomeCampoLevel]);
     txt:append('    EXP: ');
     txt:append(sheet.exp);
 

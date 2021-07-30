@@ -1,7 +1,7 @@
 require('sql.lua')
 require('util.lua')
 
-local APRIM_DATA_PATH = "database/aprim.csv"
+local APRIM_DATA_PATH = "aprim.csv"
 
 Aprim = {
     sheet = nil,
@@ -136,8 +136,6 @@ function Aprim:procurarAprim(sheetItem)
                         sheetItem.idAprim = a.id;
                         sheetItem.nomeAprim = a.nome;
                         sheetItem.descricaoAprim = a.descricao;
-                        --sheetItem.pontosAprim = a.pontos;
-                        --Aprim:atualizarComPontos(sheetItem);
                         break;
                 end;
             end;
@@ -160,7 +158,8 @@ function Aprim:atualizarComPontos(sheetItem)
 
             for _,a in ipairs(dbItens) do
                 if a.nome == sheetItem.nomeAprim 
-                    and tonumber(a.pontos) == tonumber(sheetItem.pontosAprim) then
+                    and tonumber(a.pontos) == tonumber(sheetItem.pontosAprim) 
+                    and tonumber(a.pontos) > 0 then
                         achou = true;
                         sheetItem.idAprim = a.id;
                         sheetItem.nomeAprim = a.nome;
@@ -200,12 +199,12 @@ function Aprim:atualizarComPontos(sheetItem)
                         -- Alguns aprimoramentos podem influenciar em campos na ficha
                         local max = 10
                         for i = 1, max do
-                            local col = 'campo'..i
-                            if a[col] ~= nil and a[col] ~= '' then
-                                Aprim:atualizarCampo(a.pontos, a[col]);
+                            local colCampo = 'campo'..i
+                            local colValor = 'valor'..i
+                            if a[colCampo] ~= nil and a[colCampo] ~= '' then
+                                Aprim:atualizarCampo(a[colValor], a[colCampo]);
                             end;
                         end;
-                        
                 end;
             end;
 
@@ -235,17 +234,29 @@ function Aprim:getAllParents(dbContent, childId, refFieldName)
     return parents;
 end;
 
-function Aprim:atualizarCampo(pontos, campo)
-    local sheet = Aprim:getSheet()
+function Aprim:atualizarCampo(valor, campo)
+    local sheet = Aprim:getSheet();
 
-    local base = require('scripts/base.lua');
-    local funcUpper = 'atualizar'..string.upper(campo);
-    local funcCapt = 'atualizar'..Util.capitalize(campo);
+    local scriptName = 'base';
+    local separadorCampo = '::';
+    
+    if string.find(campo, separadorCampo) then
+        local strArr = Util.split(campo, separadorCampo);
+        scriptName = strArr[1];
+        campo = strArr[2];
+    end;
 
-    if base[funcCapt] ~= nil then
-        base[funcCapt](sheet, 'aprim', tonumber(pontos))
-    elseif base[funcUpper] then
-        base[funcUpper](sheet, 'aprim', tonumber(pontos))
+    local script = require('scripts/'..scriptName..'.lua');
+
+    if script ~= nil then
+        local funcUpper = 'atualizar'..string.upper(campo);
+        local funcCapt = 'atualizar'..Util.capitalize(campo);
+
+        if script[funcCapt] ~= nil then
+            script[funcCapt](sheet, 'aprim', tonumber(valor))
+        elseif script[funcUpper] ~= nil then
+            script[funcUpper](sheet, 'aprim', tonumber(valor))
+        end;
     end;
  end;
 
