@@ -28,13 +28,12 @@
 	</style>
 
 	<label field="pontosAtribMax" visible="false"/>
-	<dataLink field="totalGastoAtrib">
+	<label field="totalGastoAtrib" visible="false"/>
+	<dataLink field="totalGastoAtrib" defaultValue="0">
 		<event name="onChange">
-			Atributos.onChangePontosAtribMax(sheet, self, oldValue, newValue);
+			Atributos.onChangeGastoPontos(sheet, self, oldValue, newValue);
 		</event>
 	</dataLink>
-	<label field="totalGastoAtrib" visible="false"/>
-	<dataLink field="totalGastoAtrib" defaultValue="0"/>
 	<label field="pontosAtribSobra" visible="false"/>
 
 	<label class="Titulo" align="left" text="Atributos"/>

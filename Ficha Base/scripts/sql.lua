@@ -20,6 +20,7 @@ Object = {}
 
 local SEPARATOR = ';'
 
+-- Divide o conteúdo do arquivo em linhas, retornando uma table contendo as linhas.
 local function splitLines(s, delimiter)
     local result = {};
     if s ~= nil and delimiter ~= nil then
@@ -30,6 +31,7 @@ local function splitLines(s, delimiter)
     return result;
 end;
 
+-- Transforma o texto em objeto lua.
 local function getObjectFromRaw(rawHeader, rawData)
     local headColumns = Util.split(rawHeader, SEPARATOR)
     local dataColumns = Util.split(rawData, SEPARATOR)
@@ -45,6 +47,7 @@ local function getObjectFromRaw(rawHeader, rawData)
     return obj;
 end
 
+-- Transforma o texto do cabeçalho em uma tabela contendo os titulos das colunas.
 local function getHeaderFromRaw(rawHeader)
     local headColumns = Util.split(rawHeader, SEPARATOR)
     local headerTable = {}
@@ -69,42 +72,52 @@ local function insertObjectIfNotExist(content, data)
     end
 end
 
-local function isArray(t)
-    local i = 0
-    for _ in pairs(t) do
-        i = i + 1
-        if t[i] == nil then
-            return false
-        end
-    end
-    return true
-end
-
-local function getTableContent(index, content)
+-- Recupera o cabeçalho do conteúdo da table lua
+local function getTableHeader(content)
     if content == nil or type(content) ~= 'table' then
-        return;
+        return '';
     end;
 
     local header = '';
-    local body = '';
 
     if content.id == nil then
         header = 'id;';
-        body = index..';';
     end;
     
     local i = 0;
     for k,v in pairs(content) do
         if i > 0 then
             header = header .. ';'
-            body = body .. ';'
         end;
         header = header .. k;
+        i = i + 1;
+    end;
+
+    return header
+end
+
+-- Tranforma o conteúdo de uma table lua em texto para ser salvo no arquivo CSV.
+local function getTableContent(index, content)
+    if content == nil or type(content) ~= 'table' then
+        return '';
+    end;
+
+    local body = '';
+
+    if content.id == nil then
+        body = index..';';
+    end;
+    
+    local i = 0;
+    for k,v in pairs(content) do
+        if i > 0 then
+            body = body .. ';'
+        end;
         body = body .. v
         i = i + 1;
     end;
 
-    return header..lineDelimiter..body
+    return lineDelimiter..body
 end
 
 function SQL.getSeparator()
@@ -115,6 +128,7 @@ function SQL.exists(path)
     return VHD.fileExists(path);
 end
 
+-- Lê um arquivo no VHD
 function SQL.readFile(fileName, encode)
     if fileName == nil then
         return nil;
@@ -153,11 +167,13 @@ function SQL.readFile(fileName, encode)
     return content;
 end;
 
+-- Criar um arquivo no VHD
 function SQL.create(fileName)
     local path = dbDir..fileName;
     return VHD.openFile(path, "w+");
 end;
 
+-- Salva o conteúdo em um arquivo n VHD
 function SQL.save(fileName, content, encoding)
     if fileName == nil or content == nil then
         return;
@@ -171,6 +187,7 @@ function SQL.save(fileName, content, encoding)
     SQL.doSave(fileName, content, encoding);
 end;
 
+-- Salva o conteúdo de uma table em um arquivo n VHD
 function SQL.saveTable(fileName, content, encoding)
     if fileName == nil or content == nil or type(content) ~= 'table' then
         return;
@@ -179,18 +196,32 @@ function SQL.saveTable(fileName, content, encoding)
     local contenTxt = '';
 
     -- se for array, precisamos criar diferentes linhas com ids
-    if isArray(content) then
+    if Util.isArray(content) then
         for i,v in ipairs(content) do
-            local iContTxt = getTableContent(i, v)
+            local iContTxt = '';
+            if i == 1 then
+                iContTxt = getTableHeader(v)
+            end
+
+            local id = i;
+            if v.id ~= nil then
+                id = v.id;
+            end
+
+            iContTxt = iContTxt .. getTableContent(id, v)
             contenTxt = contenTxt .. iContTxt;
         end
     else
-        contenTxt = getTableContent(1, content) -- no caso de um objeto, id será 1
+        contenTxt = getTableHeader(content)
+        contenTxt = contenTxt .. getTableContent(1, content) -- no caso de um objeto, id será 1
     end;
+
+    --showMessage(contenTxt)
 
     SQL.doSave(fileName, contenTxt, encoding);
 end;
 
+-- Efetua o salvamento do conteúdo no arquivo no VHD
 function SQL.doSave(fileName, content, encoding)
     if encoding == nil then
         encoding = SQL.ANSI -- encoding padrão é ANSI
@@ -202,9 +233,15 @@ function SQL.doSave(fileName, content, encoding)
     filestream:close();
 end;
 
+-- Recupera a lista de arquivos existentes no VHD
 function SQL.listFiles()
     return VHD.enumerateContent('/'..dbDir);
 end;
+
+-- Remove um arquivo do VHD
+function SQL.deleteFile(fileName)
+    VHD.deleteFile(fileName);
+end
 
 -- Content functions
 function Content:new()
@@ -256,6 +293,7 @@ function Content:getObject(column, value)
         local vStr = tostring(value);
 
         for _,o in ipairs(objects) do
+            --showMessage(Utils.tableToStr(o))
             if o[column] ~= nil and o[column] == vStr then
                 return Util.copy(o);
             end
@@ -272,5 +310,12 @@ function Object:new()
     self.__index = self
     return newObj
 end;
+
+function Object:equals(o)
+    if o == nil or o.id == nil then
+        return false
+    end
+    return Util.toNumber(self.id) == Util.toNumber(o.id)
+end
 
 return SQL;

@@ -86,4 +86,31 @@ function Util.strConcat(args)
     return res
 end
 
+function Util.isArray(t)
+    local i = 0
+    for _ in pairs(t) do
+        i = i + 1
+        if t[i] == nil then
+            return false
+        end
+    end
+    return true
+end
+
+function Util.arrayContains(arr, obj)
+    if arr == nil 
+        or not Util.isArray(arr) 
+        or obj == nil then
+            return false
+    end
+
+    for _,o in ipairs(arr) do
+        if obj['equals'] ~= nil and obj:equals(o) then
+            return true
+        end
+    end
+
+    return false
+end
+
  return Util;

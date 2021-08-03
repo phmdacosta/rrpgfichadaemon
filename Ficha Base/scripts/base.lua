@@ -62,8 +62,7 @@ function Base.aplicarLvl(sheet, form, oldValue, newValue)
     Base.atualizarPH(sheet, nomeCampoLevel, sheet[nomeCampoLevel]);
 
     -- Mais um ponto de atributo
-    if newValue ~= nil then
-        --mesa.chat:enviarMensagem('calcular pontos max atributo após altera nível')
+    if oldValue ~= nil and newValue ~= nil then
         local add = Util.toNumber(newValue) - Util.toNumber(oldValue);
 
         sheet.pontosAtribMax = Util.toNumber(sheet.pontosAtribMax) + add;
@@ -241,6 +240,16 @@ function Base.atualizarPH(sheet, key, ph)
 
     return updatedSheet;
 end;
+
+function Base.calcularSobraPontos(pontosMax, totalGasto)
+    if totalGasto == nil or totalGasto <= 0 then
+        return pontosMax;
+    elseif totalGasto < pontosMax then
+        return Util.toNumber(pontosMax) - Util.toNumber(totalGasto);
+    end;
+
+    return 0;
+end
 
 function Base.export(sheet)
     local txt = Text:new();
