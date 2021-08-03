@@ -97,27 +97,39 @@ local function getTableHeader(content)
 end
 
 -- Tranforma o conteúdo de uma table lua em texto para ser salvo no arquivo CSV.
-local function getTableContent(index, content)
-    if content == nil or type(content) ~= 'table' then
+local function getTableContent(content, header)
+    if content == nil or type(content) ~= 'table' or header == nil then
         return '';
+    end;
+
+    if type(header) == 'string' then
+        header = getHeaderFromRaw(header);
     end;
 
     local body = '';
 
-    if content.id == nil then
-        body = index..';';
-    end;
-    
     local i = 0;
-    for k,v in pairs(content) do
+    for _,k in ipairs(header) do
         if i > 0 then
-            body = body .. ';'
+            body = body .. ';';
         end;
-        body = body .. v
+        body = body .. content[k];
         i = i + 1;
     end;
 
     return lineDelimiter..body
+end
+
+local function criarCamposVazios(tabMenor, tabMaior)
+    if tabMenor == nil or tabMaior == nil then
+        return
+    end
+
+    for k,_ in pairs(tabMaior) do
+        if tabMenor[k] == nil then
+            tabMenor[k] = ''
+        end
+    end
 end
 
 function SQL.getSeparator()
@@ -197,26 +209,51 @@ function SQL.saveTable(fileName, content, encoding)
 
     -- se for array, precisamos criar diferentes linhas com ids
     if Util.isArray(content) then
+        -- devemos verificar o tamanho máximo de cada elemento 
+        -- para não perder nenhuma coluna e também evitar embaralhamento dos registros
+        local maxLength = 0
+        local maxLengthElement = nil
         for i,v in ipairs(content) do
+            local length = Util.getTableLength(v);
+            if length > maxLength then
+                maxLength = length
+                maxLengthElement = v
+            end
+        end
+        
+        local header = {};
+        for i,v in ipairs(content) do
+            local length = Util.getTableLength(v);
+
+            -- criamos campos vazios (não nil) para serem incluidos no arquivo
+            if length < maxLength and maxLengthElement ~= nil then
+                criarCamposVazios(v, maxLengthElement);
+            end;
+
             local iContTxt = '';
+            -- vamos primeiro isolar o header
+            -- que será usado como guia para criar o conteúdo do arquivo
             if i == 1 then
-                iContTxt = getTableHeader(v)
-            end
+                local headerTxt = getTableHeader(v);
+                header = getHeaderFromRaw(headerTxt);
+                contenTxt = contenTxt .. headerTxt
+            end;
 
-            local id = i;
-            if v.id ~= nil then
-                id = v.id;
-            end
+            if v.id == nil or v.id == '' then
+                v.id = i;
+            end;
 
-            iContTxt = iContTxt .. getTableContent(id, v)
+            iContTxt = iContTxt .. getTableContent(v, header)
             contenTxt = contenTxt .. iContTxt;
         end
     else
-        contenTxt = getTableHeader(content)
-        contenTxt = contenTxt .. getTableContent(1, content) -- no caso de um objeto, id será 1
+        -- not a array
+        local headerTxt = getTableHeader(content)
+        if content.id == nil then
+            content.id = 1; -- no caso de um objeto, id será 1
+        end
+        contenTxt = headerTxt .. getTableContent(content, headerTxt)
     end;
-
-    --showMessage(contenTxt)
 
     SQL.doSave(fileName, contenTxt, encoding);
 end;

@@ -113,4 +113,16 @@ function Util.arrayContains(arr, obj)
     return false
 end
 
+function Util.getTableLength(t)
+    local count = 0
+
+    if Util.isTable(t) then
+        for _,_ in pairs(t) do
+            count = count + 1
+        end
+    end
+    
+    return count
+end
+
  return Util;
